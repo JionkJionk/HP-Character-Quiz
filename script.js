@@ -1,32 +1,51 @@
-document.getElementById('quizForm').addEventListener('submit', function(event) {
-	event.preventDefault(); // Stop the page from reloading
+// Define the characters and their "personality points"
+const characters = {
+	harry: { name: "Harry Potter", description: "Brave, loyal, and always ready to fight for what’s right.", score: 0 },
+	hermione: { name: "Hermione Granger", description: "Smart, logical, and values knowledge above all.", score: 0 },
+	ron: { name: "Ron Weasley", description: "Kind-hearted, loyal, and a great friend in tough times.", score: 0 },
+	draco: { name: "Draco Malfoy", description: "Proud, ambitious, and values status and family heritage.", score: 0 }
+};
 
-	const scores = {
-		harry: 0,
-		hermione: 0,
-		ron: 0
-	};
+// Connect to the form
+const quizForm = document.getElementById("quiz-form");
 
-	const formData = new FormData(this);
-	for (let pair of formData.entries()) {
-		const answer = pair[1];
-		scores[answer]++;
-	}
+// When the form is submitted
+quizForm.addEventListener("submit", function (event) {
+	event.preventDefault(); // stop the page from refreshing
 
-	let topCharacter = '';
-	let topScore = -1;
-	for (let character in scores) {
-		if (scores[character] > topScore) {
-			topScore = scores[character];
-			topCharacter = character;
+	// Reset all scores
+	for (let key in characters) {
+		characters[key].score = 0;
+}
+
+	// Get all selected answers
+	const answers = new FormData(quizForm);
+	
+	for (let [question, characterKey] of answers.entries()) {
+		if (characters[characterKey]) {
+			characters[characterKey].score++;
 		}
 	}
 
-	const results = {
-		harry: "You're Harry Potter! Brave, determined, and a natural leader.",
-		hermione: "You're Hermione Granger! Smart, curious, and always prepared.",
-		ron: "You're Ron Weasley! Loyal, funny, and a true friend."
-	};
+	// Find the character with the highest score
+	let topCharacter = null;
+	let maxScore = 0;
 
-	document.getElementById('result').innerText = results[topCharacter];
+	for (let key in characters) {
+		if (characters[key].score > maxScore) {
+			topCharacter = characters[key];
+			maxScore = characters[key].score;
+		}
+	}
+
+	// Show the result
+	const resultDiv = document.getElementById("result");
+	if (topCharacter) {
+		resultDiv.innerHTML = `
+			<h2 class="result-title">You are most like ${topCharacter.name}!</h2>
+			<p class="result-description">${topCharacter.description}</p>
+		`;
+	} else {
+		resultDiv.innerHTML = `<p>Please answer all the questions.</p>`;
+	}
 });
