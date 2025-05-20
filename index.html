@@ -1,32 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Harry Potter Character Quiz</title>
-	<link rel="stylesheet" href="style.css">
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Wizarding Character Assessment</title>
+	<link rel="stylesheet" href="style.css" />
+	<link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
 </head>
 <body>
-	<h1>Which Harry Potter Character Are You?</h1>
+	<div class="container">
+		<h1>Wizarding Character Assessment</h1>
+		<p class="intro">
+			You have received an official scroll from the Department of Magical Character Analysis.
+			Kindly respond to the inquiries below to determine your magical identity.
+		</p>
 
-	<form id="quizForm">
-		<div class="question">
-			<p>1. What would you do if your friend was in danger?</p>
-			<label><input type="radio" name="q1" value="harry"> Fight to protect them</label><br>
-			<label><input type="radio" name="q1" value="hermione"> Use your knowledge to help</label><br>
-			<label><input type="radio" name="q1" value="ron"> Stay with them no matter what</label><br>
-		</div>
+		<form>
+			<div class="question">
+				<p>1. When danger strikes, your instinct is to:</p>
+				<label><input type="radio" name="q1" value="harry"> Draw your wand and charge in fearlessly.</label><br>
+				<label><input type="radio" name="q1" value="hermione"> Strategize with precision and intellect.</label><br>
+				<label><input type="radio" name="q1" value="ron"> Stick by your allies and act on loyalty.</label>
+			</div>
 
-		<div class="question">
-			<p>2. What’s your best trait?</p>
-			<label><input type="radio" name="q2" value="harry"> Bravery</label><br>
-			<label><input type="radio" name="q2" value="hermione"> Intelligence</label><br>
-			<label><input type="radio" name="q2" value="ron"> Loyalty</label><br>
-		</div>
+			<!-- Add more questions here using the same structure -->
 
-		<button type="submit">Get Result</button>
-	</form>
-
-	<div id="result"></div>
-
-	<script src="script.js"></script>
+			<button type="submit">Reveal My Magical Match</button>
+		</form>
+	</div>
 </body>
 </html>
