@@ -1,51 +1,39 @@
-// Define the characters and their "personality points"
-const characters = {
-	harry: { name: "Harry Potter", description: "Brave, loyal, and always ready to fight for what’s right.", score: 0 },
-	hermione: { name: "Hermione Granger", description: "Smart, logical, and values knowledge above all.", score: 0 },
-	ron: { name: "Ron Weasley", description: "Kind-hearted, loyal, and a great friend in tough times.", score: 0 },
-	draco: { name: "Draco Malfoy", description: "Proud, ambitious, and values status and family heritage.", score: 0 }
-};
+document.getElementById("quiz-form").addEventListener("submit", function (e) {
+  e.preventDefault();
 
-// Connect to the form
-const quizForm = document.getElementById("quiz-form");
+  const form = new FormData(this);
+  let scores = {
+    HP: 0, RW: 0, HG: 0, MM: 0, AD: 0, RH: 0, SS: 0, DM: 0, NL: 0
+  };
 
-// When the form is submitted
-quizForm.addEventListener("submit", function (event) {
-	event.preventDefault(); // stop the page from refreshing
+  // Sample point system for testing
+  const q1 = form.get("q1");
+  if (q1 === "strongly-agree") scores[HG] += 2;
+  else if (q1 === "agree") scores[MM] += 1;
+  else if (q1 === "disagree") scores[RW] += 1;
+  else if (q1 === "strongly-disagree") scores[DM] += 2;
 
-	// Reset all scores
-	for (let key in characters) {
-		characters[key].score = 0;
-}
+  const q2 = form.get("q2");
+  if (q2 === "brave") scores[HP] += 2;
+  if (q2 === "clever") scores[HG] += 2;
+  if (q2 === "loyal") scores[RH] += 2;
+  if (q2 === "ambitious") scores[DM] += 2;
 
-	// Get all selected answers
-	const answers = new FormData(quizForm);
-	
-	for (let [question, characterKey] of answers.entries()) {
-		if (characters[characterKey]) {
-			characters[characterKey].score++;
-		}
-	}
+  // Get highest score
+  const topChar = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
 
-	// Find the character with the highest score
-	let topCharacter = null;
-	let maxScore = 0;
+  const characterNames = {
+    HP: "Harry Potter",
+    RW: "Ron Weasley",
+    HG: "Hermione Granger",
+    MM: "Minerva McGonagall",
+    AD: "Albus Dumbledore",
+    RH: "Rubeus Hagrid",
+    SS: "Severus Snape",
+    DM: "Draco Malfoy",
+    NL: "Neville Longbottom"
+  };
 
-	for (let key in characters) {
-		if (characters[key].score > maxScore) {
-			topCharacter = characters[key];
-			maxScore = characters[key].score;
-		}
-	}
-
-	// Show the result
-	const resultDiv = document.getElementById("result");
-	if (topCharacter) {
-		resultDiv.innerHTML = `
-			<h2 class="result-title">You are most like ${topCharacter.name}!</h2>
-			<p class="result-description">${topCharacter.description}</p>
-		`;
-	} else {
-		resultDiv.innerHTML = `<p>Please answer all the questions.</p>`;
-	}
+  const resultBox = document.getElementById("result");
+  resultBox.innerHTML = `<strong>You are most like:</strong> <span style="font-size:1.2em">${characterNames[topChar] || "an unknown wizard"}</span>`;
 });
