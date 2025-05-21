@@ -1,53 +1,73 @@
 body {
-background-image: url('parchment.jpg'); /* Add parchment.jpg to your folder */
-background-size: cover;
-background-attachment: fixed;
-font-family: 'Cinzel', serif;
-color: #2b1a0f;
-margin: 0;
-padding: 0;
+  margin: 0;
+  padding: 0;
+  font-family: 'IM Fell English', serif;
+  background: url('https://i.imgur.com/H18kPAX.jpg') repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
-.container {
-max-width: 800px;
-margin: 40px auto;
-background-color: rgba(255, 248, 220, 0.88);
-border: 2px solid #5c4434;
-padding: 40px;
-box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.3);
-border-radius: 10px;
+.parchment {
+  background: rgba(253, 246, 215, 0.95);
+  border: 10px double #5a3e1b;
+  padding: 40px;
+  max-width: 700px;
+  width: 90%;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  border-radius: 20px;
 }
 
 h1 {
-text-align: center;
-font-size: 2.5em;
-margin-bottom: 20px;
-text-decoration: underline;
+  font-size: 2.2em;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #3b2b13;
 }
 
-.intro {
-font-style: italic;
-margin-bottom: 30px;
+.question-block {
+  margin-bottom: 25px;
 }
 
-.question {
-margin-bottom: 30px;
+.question-block p {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  color: #2e1d0f;
+}
+
+label {
+  display: block;
+  margin: 5px 0;
+  cursor: pointer;
+  font-size: 1em;
+  color: #2e1d0f;
 }
 
 button {
-display: block;
-margin: auto;
-background-color: #5c4434;
-color: #fff8e7;
-padding: 12px 24px;
-font-family: 'Cinzel', serif;
-font-size: 1em;
-border: none;
-cursor: pointer;
-border-radius: 5px;
-transition: 0.3s;
+  display: block;
+  margin: 30px auto 0;
+  background-color: #5a3e1b;
+  color: #fff;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
 button:hover {
-background-color: #3e2e22;
+  background-color: #3e2b14;
+}
+
+.result-box {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #fff7e6;
+  border: 3px dashed #5a3e1b;
+  border-radius: 10px;
+  font-size: 1.1em;
+  color: #2e1d0f;
 }
