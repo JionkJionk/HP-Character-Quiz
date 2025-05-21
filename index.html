@@ -1,32 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Wizarding Character Assessment</title>
-	<link rel="stylesheet" href="style.css" />
-	<link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wizarding Personality Quiz</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English&display=swap" rel="stylesheet">
 </head>
 <body>
-	<div class="container">
-		<h1>Wizarding Character Assessment</h1>
-		<p class="intro">
-			You have received an official scroll from the Department of Magical Character Analysis.
-			Kindly respond to the inquiries below to determine your magical identity.
-		</p>
+  <div class="parchment">
+    <h1>Wizarding Personality Assessment</h1>
+    <form id="quiz-form">
+      <!-- Example Question 1 -->
+      <div class="question-block">
+        <p>I often think before I act, even if it slows me down.</p>
+        <label><input type="radio" name="q1" value="strongly-agree"> Strongly Agree</label>
+        <label><input type="radio" name="q1" value="agree"> Agree</label>
+        <label><input type="radio" name="q1" value="neutral"> Neutral</label>
+        <label><input type="radio" name="q1" value="disagree"> Disagree</label>
+        <label><input type="radio" name="q1" value="strongly-disagree"> Strongly Disagree</label>
+      </div>
 
-		<form>
-			<div class="question">
-				<p>1. When danger strikes, your instinct is to:</p>
-				<label><input type="radio" name="q1" value="harry"> Draw your wand and charge in fearlessly.</label><br>
-				<label><input type="radio" name="q1" value="hermione"> Strategize with precision and intellect.</label><br>
-				<label><input type="radio" name="q1" value="ron"> Stick by your allies and act on loyalty.</label>
-			</div>
+      <!-- Example Question 2 -->
+      <div class="question-block">
+        <p>Pick the word that describes you best:</p>
+        <label><input type="radio" name="q2" value="brave"> Brave</label>
+        <label><input type="radio" name="q2" value="clever"> Clever</label>
+        <label><input type="radio" name="q2" value="loyal"> Loyal</label>
+        <label><input type="radio" name="q2" value="ambitious"> Ambitious</label>
+      </div>
 
-			<!-- Add more questions here using the same structure -->
+      <button type="submit">Reveal My Wizard Identity</button>
+    </form>
 
-			<button type="submit">Reveal My Magical Match</button>
-		</form>
-	</div>
+    <div id="result" class="result-box"></div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
