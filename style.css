@@ -65,12 +65,13 @@ button:hover {
   background-color: #3e2b14;
 }
 
-.result-box {
-  margin-top: 30px;
-  padding: 20px;
-  background-color: rgba(255, 247, 230, 0.9);
-  border: 3px dashed #5a3e1b;
-  border-radius: 10px;
-  font-size: 1.2em;
-  text-align: center;
+.description {
+  margin-top: 20px;
+  font-size: 1.1em;
+  background-color: rgba(255, 250, 240, 0.8);
+  border-left: 5px solid #5a3e1b;
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-align: left;
+  color: #3b2b13;
 }
