@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  background: url('https://imgur.com/gallery/parchment-IMffJf3') no-repeat center center fixed;
+  background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Old_paper_texture.jpg/1024px-Old_paper_texture.jpg') no-repeat center center fixed;
   background-size: cover;
   font-family: 'IM Fell English', serif;
 }
@@ -15,15 +15,16 @@ body {
 }
 
 .quiz-box {
-  background: url('https://i.imgur.com/WP8n1Hy.png');
+  background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Parchment_paper_background.jpg/800px-Parchment_paper_background.jpg') no-repeat center center;
   background-size: cover;
   padding: 40px;
   max-width: 700px;
   width: 100%;
-  border: 8px double #5a3e1b;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
-  border-radius: 20px;
+  border: 10px ridge #5a3e1b;
+  box-shadow: 0 0 25px rgba(0,0,0,0.6);
+  border-radius: 15px;
   color: #3b2b13;
+  backdrop-filter: blur(1px);
 }
 
 h1 {
