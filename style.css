@@ -1,30 +1,35 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'IM Fell English', serif;
-  background: url('https://i.imgur.com/H18kPAX.jpg') repeat;
+  background: url('https://i.imgur.com/JWn2KBL.jpg') no-repeat center center fixed;
   background-size: cover;
+  font-family: 'IM Fell English', serif;
+}
+
+.quiz-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  padding: 20px;
 }
 
-.parchment {
-  background: rgba(253, 246, 215, 0.95);
-  border: 10px double #5a3e1b;
+.quiz-box {
+  background: url('https://i.imgur.com/WP8n1Hy.png');
+  background-size: cover;
   padding: 40px;
   max-width: 700px;
-  width: 90%;
-  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  width: 100%;
+  border: 8px double #5a3e1b;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
   border-radius: 20px;
+  color: #3b2b13;
 }
 
 h1 {
-  font-size: 2.2em;
   text-align: center;
   margin-bottom: 30px;
-  color: #3b2b13;
+  font-size: 2em;
 }
 
 .question-block {
@@ -34,22 +39,19 @@ h1 {
 .question-block p {
   font-size: 1.2em;
   margin-bottom: 10px;
-  color: #2e1d0f;
 }
 
 label {
   display: block;
   margin: 5px 0;
-  cursor: pointer;
   font-size: 1em;
-  color: #2e1d0f;
 }
 
 button {
   display: block;
   margin: 30px auto 0;
   background-color: #5a3e1b;
-  color: #fff;
+  color: #fff7e6;
   padding: 12px 30px;
   border: none;
   border-radius: 8px;
@@ -65,9 +67,9 @@ button:hover {
 .result-box {
   margin-top: 30px;
   padding: 20px;
-  background-color: #fff7e6;
+  background-color: rgba(255, 247, 230, 0.9);
   border: 3px dashed #5a3e1b;
   border-radius: 10px;
-  font-size: 1.1em;
-  color: #2e1d0f;
+  font-size: 1.2em;
+  text-align: center;
 }
