@@ -2,38 +2,38 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Wizarding Personality Quiz</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="parchment">
-    <h1>Wizarding Personality Assessment</h1>
-    <form id="quiz-form">
-      <!-- Example Question 1 -->
-      <div class="question-block">
-        <p>I often think before I act, even if it slows me down.</p>
-        <label><input type="radio" name="q1" value="strongly-agree"> Strongly Agree</label>
-        <label><input type="radio" name="q1" value="agree"> Agree</label>
-        <label><input type="radio" name="q1" value="neutral"> Neutral</label>
-        <label><input type="radio" name="q1" value="disagree"> Disagree</label>
-        <label><input type="radio" name="q1" value="strongly-disagree"> Strongly Disagree</label>
-      </div>
+  <div class="quiz-wrapper">
+    <div class="quiz-box">
+      <h1>Wizarding Personality Assessment</h1>
+      <form id="quiz-form">
+        <div class="question-block">
+          <p>I often think before I act, even if it slows me down.</p>
+          <label><input type="radio" name="q1" value="strongly-agree"> Strongly Agree</label>
+          <label><input type="radio" name="q1" value="agree"> Agree</label>
+          <label><input type="radio" name="q1" value="neutral"> Neutral</label>
+          <label><input type="radio" name="q1" value="disagree"> Disagree</label>
+          <label><input type="radio" name="q1" value="strongly-disagree"> Strongly Disagree</label>
+        </div>
 
-      <!-- Example Question 2 -->
-      <div class="question-block">
-        <p>Pick the word that describes you best:</p>
-        <label><input type="radio" name="q2" value="brave"> Brave</label>
-        <label><input type="radio" name="q2" value="clever"> Clever</label>
-        <label><input type="radio" name="q2" value="loyal"> Loyal</label>
-        <label><input type="radio" name="q2" value="ambitious"> Ambitious</label>
-      </div>
+        <div class="question-block">
+          <p>Pick the word that describes you best:</p>
+          <label><input type="radio" name="q2" value="brave"> Brave</label>
+          <label><input type="radio" name="q2" value="clever"> Clever</label>
+          <label><input type="radio" name="q2" value="loyal"> Loyal</label>
+          <label><input type="radio" name="q2" value="ambitious"> Ambitious</label>
+        </div>
 
-      <button type="submit">Reveal My Wizard Identity</button>
-    </form>
+        <button type="submit">Reveal My Wizard Identity</button>
+      </form>
 
-    <div id="result" class="result-box"></div>
+      <div id="result" class="result-box"></div>
+    </div>
   </div>
 
   <script src="script.js"></script>
