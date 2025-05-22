@@ -1,15 +1,16 @@
-<!-- quiz.html (Quiz Page) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Quiz</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body class="parchment">
-  <div class="quiz-container" id="quiz"></div>
-  <button id="submit" onclick="submitQuiz()">Submit</button>
+  <div class="container" id="quiz-container">
+    <form id="quiz-form"></form>
+    <button class="submit-btn" onclick="submitQuiz()">Submit</button>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>
