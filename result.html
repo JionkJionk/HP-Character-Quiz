@@ -1,0 +1,29 @@
+<!-- result.html (Result Page) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Result</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="parchment">
+  <div id="result-card" class="result-card"></div>
+  <button onclick="location.href='index.html'">Take Again</button>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const character = params.get("character");
+    const data = JSON.parse(localStorage.getItem("quizResults"));
+
+    if (data && data.character === character) {
+      const card = document.getElementById("result-card");
+      card.classList.add(`house-${data.house}`);
+      card.innerHTML = `
+        <h2>${data.character}</h2>
+        <p>${data.description}</p>
+        <button onclick="navigator.share({ title: 'Hogwarts Quiz Result', url: window.location.href })">Share Result</button>
+      `;
+    }
+  </script>
+</body>
+</html>
