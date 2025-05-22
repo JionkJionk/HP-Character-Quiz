@@ -1,63 +1,69 @@
-<!-- style.css -->
 body.parchment {
-  background: url('https://www.transparenttextures.com/patterns/old-paper.png');
-  font-family: 'Cinzel', serif;
-  color: #3e2e15;
+  font-family: 'Cormorant Garamond', serif;
+  background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+  background-color: #f6f1d3;
   margin: 0;
   padding: 0;
-  text-align: center;
 }
 
-.start-screen, .quiz-container, .result-card {
-  max-width: 600px;
-  margin: 50px auto;
+.container {
+  max-width: 700px;
+  margin: 0 auto;
   padding: 30px;
-  background-color: rgba(255, 248, 220, 0.9);
-  border: 2px solid #8b5a2b;
-  border-radius: 15px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  border: 5px double #5c3d1e;
+  border-radius: 20px;
+  margin-top: 5vh;
 }
 
-.quiz-title {
-  font-size: 2.5em;
+.centered {
+  text-align: center;
+  margin-top: 20vh;
 }
 
-.start-button {
-  background: url('https://i.imgur.com/JT44zmA.png') no-repeat center;
-  background-size: contain;
-  width: 100px;
-  height: 100px;
-  border: none;
-  cursor: pointer;
+.title {
+  font-size: 3em;
+  margin-bottom: 10px;
 }
 
-button {
-  font-family: 'Cinzel', serif;
-  background-color: #8b5a2b;
-  color: white;
+.message {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+}
+
+.start-btn, .submit-btn, .share-btn {
+  font-size: 1.2em;
   padding: 10px 20px;
-  margin-top: 20px;
   border: none;
-  border-radius: 10px;
+  background-color: #5c3d1e;
+  color: #fff;
   cursor: pointer;
+  border-radius: 8px;
 }
 
-.house-gryffindor {
-  background-color: #ae0001;
-  color: gold;
+.start-btn:hover, .submit-btn:hover, .share-btn:hover {
+  background-color: #422a12;
 }
 
-.house-slytherin {
-  background-color: #2a623d;
-  color: silver;
+.character-img {
+  width: 200px;
+  border-radius: 10px;
+  margin: 20px 0;
 }
 
-.house-ravenclaw {
-  background-color: #222f5b;
-  color: bronze;
+.card-title {
+  font-size: 2em;
+  margin-top: 0;
 }
 
-.house-hufflepuff {
-  background-color: #ecb939;
-  color: black;
+.card-description {
+  font-size: 1.1em;
+  line-height: 1.5;
 }
+
+/* Character-specific colors */
+.gryffindor { background: linear-gradient(to right, #ae0001, #f2a007); color: white; }
+.slytherin   { background: linear-gradient(to right, #1a472a, #2a623d); color: white; }
+.ravenclaw   { background: linear-gradient(to right, #0e1a40, #5d5d5d); color: white; }
+.hufflepuff  { background: linear-gradient(to right, #f0c75e, #ecb939); color: black; }
