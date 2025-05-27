@@ -4,15 +4,21 @@ function assignPoints(formId) {
   const form = document.getElementById(formId);
   const inputs = form.querySelectorAll('input[type="radio"]:checked');
 
-  if (inputs.length < form.querySelectorAll('input[type="radio"]').length / 5) {
-    alert("Please answer all questions.");
+  // Check if all questions answered
+  const questions = new Set();
+  inputs.forEach(input => questions.add(input.name));
+  const totalQuestions = form.querySelectorAll('.question-block').length;
+  if (questions.size !== totalQuestions) {
+    alert('Please answer all questions before continuing.');
     return false;
   }
 
   inputs.forEach(input => {
-    const [char, weight] = input.value.split(':');
-    if (!characterPoints[char]) characterPoints[char] = 0;
-    characterPoints[char] += parseInt(weight);
+    const character = input.value;
+    if (!characterPoints[character]) {
+      characterPoints[character] = 0;
+    }
+    characterPoints[character]++;
   });
 
   localStorage.setItem('characterPoints', JSON.stringify(characterPoints));
@@ -54,9 +60,12 @@ document.addEventListener('DOMContentLoaded', () => {
           bestCharacter = char;
         }
       }
+
       resultDisplay.textContent = bestCharacter
         ? `${bestCharacter} — your magical match!`
         : 'No character found.';
     }
+    // Clear points for a fresh start next time
+    localStorage.removeItem('characterPoints');
   }
 });
