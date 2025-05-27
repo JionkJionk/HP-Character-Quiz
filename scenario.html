@@ -1,31 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Scenario-Based Quiz</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>Scenario Questions</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
-    <h1>Scenario-Based Questions</h1>
     <form id="scenarioQuizForm">
-      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-      
-      <div class="question-block">
-        <p>You hear someone getting bullied in the hallway. What do you do?</p>
-        <label><input type="radio" name="q1" value="Harry:5"/> Step in right away.</label>
-        <label><input type="radio" name="q1" value="Hermione:4"/> Report it to a teacher.</label>
-        <label><input type="radio" name="q1" value="Ron:3"/> Help if others do first.</label>
-        <label><input type="radio" name="q1" value="Draco:1"/> Join in the bullying.</label>
+      <div class="question">
+        <h3>You see a friend being bullied. What do you do?</h3>
+        <div class="options">
+          <label class="option"><input type="radio" name="q1" value="HP"> Stand up and fight back</label>
+          <label class="option"><input type="radio" name="q1" value="HG"> Get help from a teacher</label>
+          <label class="option"><input type="radio" name="q1" value="RW"> Try to calm things down</label>
+          <label class="option"><input type="radio" name="q1" value="DM"> Watch from a distance</label>
+        </div>
       </div>
-
-      <!-- Add more scenario questions here -->
-
-      <button type="submit" class="btn">Submit</button>
+      <button type="submit" class="btn">See Results</button>
     </form>
   </div>
-
   <script src="script.js"></script>
 </body>
 </html>
