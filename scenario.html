@@ -2,19 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Scenario-Based Quiz</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
     <h1>Scenario-Based Questions</h1>
-
-    <div class="progress-bar">
-      <div class="progress-fill" id="progressFill"></div>
-    </div>
-
     <form id="scenarioQuizForm">
+      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+      
       <div class="question-block">
         <p>You hear someone getting bullied in the hallway. What do you do?</p>
         <label><input type="radio" name="q1" value="Harry:5"/> Step in right away.</label>
@@ -23,13 +20,7 @@
         <label><input type="radio" name="q1" value="Draco:1"/> Join in the bullying.</label>
       </div>
 
-      <div class="question-block">
-        <p>When faced with a difficult problem, you:</p>
-        <label><input type="radio" name="q2" value="Hermione:5"/> Research and plan carefully.</label>
-        <label><input type="radio" name="q2" value="Harry:4"/> Trust your instincts and act.</label>
-        <label><input type="radio" name="q2" value="Ron:3"/> Ask friends for advice.</label>
-        <label><input type="radio" name="q2" value="Draco:2"/> Try to avoid it if possible.</label>
-      </div>
+      <!-- Add more scenario questions here -->
 
       <button type="submit" class="btn">Submit</button>
     </form>
