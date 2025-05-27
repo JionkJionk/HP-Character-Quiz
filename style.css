@@ -1,38 +1,163 @@
-.container {
-  /* existing styles */
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* center everything inside container */
-  text-align: center;  /* center text inside questions and answers */
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harry Potter Personality Quiz</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-.question-block {
-  margin-bottom: 1.5em;
-  width: 100%;
-  max-width: 600px;
-  /* keep question text left aligned inside this block for readability */
-  text-align: center; 
-  position: relative;
-}
+    body {
+      margin: 0;
+      font-family: 'Garamond', serif;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Old_parchment_texture.jpg/1024px-Old_parchment_texture.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #4b3b21;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-/* Center radio/checkbox labels under question */
-.options {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-}
+    .container {
+      width: 100%;
+      max-width: 700px;
+      background-color: rgba(245, 238, 222, 0.9);
+      padding: 40px;
+      border-radius: 16px;
+      border: 3px solid #a67c00;
+      box-shadow: 0 0 15px #b59f32;
+      text-align: center;
+    }
 
-/* Put a line after each answer group except the last question in the set */
-.question-block:not(:last-child) {
-  border-bottom: 1px solid #a67c00;
-  padding-bottom: 1em;
-  margin-bottom: 1em;
-}
+    h1, h2, h3 {
+      margin-bottom: 20px;
+      color: #5a3e1b;
+      text-shadow: 1px 1px 1px #d6c792;
+    }
 
-/* Buttons centered with some margin */
-.btn {
-  margin-top: 20px;
-  align-self: center;
-  /* rest of your button styles */
-}
+    .question-block {
+      margin-bottom: 1.5em;
+      text-align: center;
+    }
+
+    .question-block hr {
+      border: none;
+      height: 1px;
+      background-color: #a67c00;
+      margin: 20px auto;
+      width: 60%;
+    }
+
+    .options {
+      margin: 10px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+    }
+
+    label {
+      cursor: pointer;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #a67c00;
+      color: #fff;
+      padding: 12px 24px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+      user-select: none;
+    }
+
+    .btn:hover {
+      background-color: #7d6000;
+    }
+
+    .result-box {
+      font-size: 24px;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    .restart-btn {
+      margin-top: 40px;
+      padding: 14px 30px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Harry Potter Personality Quiz</h1>
+
+    <form id="quiz-form">
+      <div class="question-block">
+        <p><strong>1. I always stand up for what's right, no matter the cost.</strong></p>
+        <div class="options">
+          <label><input type="radio" name="q1" value="Harry"> Strongly Agree</label>
+          <label><input type="radio" name="q1" value="Neville"> Agree</label>
+          <label><input type="radio" name="q1" value="Hermione"> Neutral</label>
+          <label><input type="radio" name="q1" value="Draco"> Disagree</label>
+          <label><input type="radio" name="q1" value="Snape"> Strongly Disagree</label>
+        </div>
+        <hr>
+      </div>
+
+      <div class="question-block">
+        <p><strong>2. I value logic and rules more than emotions.</strong></p>
+        <div class="options">
+          <label><input type="radio" name="q2" value="Hermione"> Strongly Agree</label>
+          <label><input type="radio" name="q2" value="McGonagall"> Agree</label>
+          <label><input type="radio" name="q2" value="Snape"> Neutral</label>
+          <label><input type="radio" name="q2" value="Harry"> Disagree</label>
+          <label><input type="radio" name="q2" value="Hagrid"> Strongly Disagree</label>
+        </div>
+        <hr>
+      </div>
+
+      <button type="submit" class="btn">Submit</button>
+    </form>
+
+    <div id="result" class="result-box" style="display: none;"></div>
+    <button id="restart" class="btn restart-btn" style="display: none;">Start Over</button>
+  </div>
+
+  <script>
+    const form = document.getElementById('quiz-form');
+    const resultBox = document.getElementById('result');
+    const restartBtn = document.getElementById('restart');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      const scores = {};
+
+      for (let [question, character] of formData.entries()) {
+        scores[character] = (scores[character] || 0) + 1;
+      }
+
+      const sorted = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+      const topCharacter = sorted.length ? sorted[0][0] : "Unknown";
+
+      resultBox.textContent = `You are most like: ${topCharacter}!`;
+      resultBox.style.display = 'block';
+      restartBtn.style.display = 'inline-block';
+      form.style.display = 'none';
+    });
+
+    restartBtn.addEventListener('click', function() {
+      window.location.reload();
+    });
+  </script>
+</body>
+</html>
