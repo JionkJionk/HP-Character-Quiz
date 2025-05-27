@@ -1,49 +1,92 @@
-const TOTAL_QUESTIONS = 4; // update this to total number of all questions on likert + scenario combined
-
 let characterPoints = {};
+let currentIndex = 0;
+const questionsPerPage = 3;
 
-// Helper: Count how many questions are answered in the current form
-function countAnsweredQuestions(form) {
-  const questionNames = new Set();
-  const inputs = form.querySelectorAll('input[type="radio"]');
-  inputs.forEach(input => questionNames.add(input.name));
-  
-  let answeredCount = 0;
-  questionNames.forEach(name => {
-    if (form.querySelector(`input[name="${name}"]:checked`)) {
-      answeredCount++;
-    }
-  });
-  return answeredCount;
-}
-
-// Update progress bar function
-function updateProgressBar(form) {
-  const answered = countAnsweredQuestions(form);
-  const progressPercent = (answered / TOTAL_QUESTIONS) * 100;
-  const progressFill = form.querySelector('#progressFill');
-  if (progressFill) {
-    progressFill.style.width = progressPercent + '%';
+// Likert-style questions
+const questions = [
+  {
+    question: "I value rules and structure.",
+    answers: [
+      { label: "Strongly Agree", value: "HG", weight: 2 },
+      { label: "Agree", value: "MM", weight: 1 },
+      { label: "Neutral", value: "RW", weight: 1 },
+      { label: "Disagree", value: "HP", weight: 1 },
+      { label: "Strongly Disagree", value: "DM", weight: 2 }
+    ]
+  },
+  {
+    question: "I act on my emotions without thinking.",
+    answers: [
+      { label: "Strongly Agree", value: "HP", weight: 2 },
+      { label: "Agree", value: "DM", weight: 1 },
+      { label: "Neutral", value: "RW", weight: 1 },
+      { label: "Disagree", value: "HG", weight: 1 },
+      { label: "Strongly Disagree", value: "SS", weight: 2 }
+    ]
+  },
+  {
+    question: "I like to solve problems logically.",
+    answers: [
+      { label: "Strongly Agree", value: "HG", weight: 2 },
+      { label: "Agree", value: "AD", weight: 1 },
+      { label: "Neutral", value: "HP", weight: 1 },
+      { label: "Disagree", value: "RW", weight: 1 },
+      { label: "Strongly Disagree", value: "RH", weight: 2 }
+    ]
+  },
+  {
+    question: "I am often underestimated by others.",
+    answers: [
+      { label: "Strongly Agree", value: "NL", weight: 2 },
+      { label: "Agree", value: "SS", weight: 1 },
+      { label: "Neutral", value: "RW", weight: 1 },
+      { label: "Disagree", value: "DM", weight: 1 },
+      { label: "Strongly Disagree", value: "AD", weight: 2 }
+    ]
   }
+];
+
+function renderLikertQuestions() {
+  const container = document.getElementById('likertQuestions');
+  if (!container) return;
+
+  container.innerHTML = '';
+
+  const endIndex = currentIndex + questionsPerPage;
+  const pageQuestions = questions.slice(currentIndex, endIndex);
+
+  pageQuestions.forEach((q, i) => {
+    const qEl = document.createElement('div');
+    qEl.classList.add('question');
+    qEl.innerHTML = `<h3>${q.question}</h3>`;
+
+    const optionsDiv = document.createElement('div');
+    optionsDiv.classList.add('likert-options');
+
+    q.answers.forEach((a, idx) => {
+      const id = `q${currentIndex + i}-opt${idx}`;
+      optionsDiv.innerHTML += `
+        <label class="likert-option">
+          <input type="radio" name="q${currentIndex + i}" value="${a.value}" data-weight="${a.weight}" required> ${a.label}
+        </label>`;
+    });
+
+    qEl.appendChild(optionsDiv);
+    container.appendChild(qEl);
+  });
 }
 
-// Assign points from checked inputs on the current page
 function assignPoints(formId) {
   const form = document.getElementById(formId);
   const inputs = form.querySelectorAll('input[type="radio"]:checked');
-  
-  // Load existing points from localStorage or reset
-  const storedPoints = localStorage.getItem('characterPoints');
-  characterPoints = storedPoints ? JSON.parse(storedPoints) : {};
-  
+
   inputs.forEach(input => {
-    const val = input.value; // format "Character:Points"
-    const [character, pointsStr] = val.split(':');
-    const points = parseInt(pointsStr, 10);
+    const character = input.value;
+    const weight = parseInt(input.dataset.weight) || 1;
     if (!characterPoints[character]) {
       characterPoints[character] = 0;
     }
-    characterPoints[character] += points;
+    characterPoints[character] += weight;
   });
 
   localStorage.setItem('characterPoints', JSON.stringify(characterPoints));
@@ -55,49 +98,29 @@ document.addEventListener('DOMContentLoaded', () => {
   const resultDisplay = document.getElementById('resultDisplay');
 
   if (likertForm) {
-    // Real-time progress update on radio change
-    likertForm.querySelectorAll('input[type="radio"]').forEach(radio => {
-      radio.addEventListener('change', () => updateProgressBar(likertForm));
-    });
-    
-    updateProgressBar(likertForm);
-
+    renderLikertQuestions();
     likertForm.addEventListener('submit', e => {
       e.preventDefault();
-      const answered = countAnsweredQuestions(likertForm);
-      const questionCount = new Set([...likertForm.querySelectorAll('input[type="radio"]')].map(input => input.name)).size;
-      if (answered < questionCount) {
-        alert('Please answer all questions before continuing.');
-        return;
-      }
       assignPoints('likertQuizForm');
-      window.location.href = 'scenario.html';
+
+      currentIndex += questionsPerPage;
+      if (currentIndex < questions.length) {
+        renderLikertQuestions();
+      } else {
+        window.location.href = 'scenario.html';
+      }
     });
   }
 
   if (scenarioForm) {
-    // Real-time progress update on radio change
-    scenarioForm.querySelectorAll('input[type="radio"]').forEach(radio => {
-      radio.addEventListener('change', () => updateProgressBar(scenarioForm));
-    });
-    
-    updateProgressBar(scenarioForm);
-
     scenarioForm.addEventListener('submit', e => {
       e.preventDefault();
-      const answered = countAnsweredQuestions(scenarioForm);
-      const questionCount = new Set([...scenarioForm.querySelectorAll('input[type="radio"]')].map(input => input.name)).size;
-      if (answered < questionCount) {
-        alert('Please answer all questions before submitting.');
-        return;
-      }
       assignPoints('scenarioQuizForm');
       window.location.href = 'result.html';
     });
   }
 
   if (resultDisplay) {
-    // Show final result
     const stored = localStorage.getItem('characterPoints');
     if (stored) {
       const points = JSON.parse(stored);
@@ -109,6 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
           bestCharacter = char;
         }
       }
+
       resultDisplay.textContent = bestCharacter
         ? `${bestCharacter} — your magical match!`
         : 'No character found.';
