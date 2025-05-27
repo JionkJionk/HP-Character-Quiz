@@ -1,106 +1,72 @@
-// Total questions across both quizzes:
-const TOTAL_QUESTIONS = 5; // 3 in likert.html + 2 in scenario.html
+const TOTAL_QUESTIONS = 4; // update this to total number of all questions on likert + scenario combined
 
 let characterPoints = {};
 
-// Helper to update localStorage and object
-function addPoints(character, points) {
-  if (!characterPoints[character]) {
-    characterPoints[character] = 0;
-  }
-  characterPoints[character] += points;
-  localStorage.setItem('characterPoints', JSON.stringify(characterPoints));
-}
-
-// Parse value like "Harry:5" into {character, points}
-function parseValue(val) {
-  const [character, ptsStr] = val.split(':');
-  return { character, points: Number(ptsStr) };
-}
-
-// Validate all questions answered
-function validateForm(form) {
-  const radios = form.querySelectorAll('input[type="radio"]');
-  const names = new Set();
-  radios.forEach(radio => names.add(radio.name));
-  for (const name of names) {
-    const checked = form.querySelector(`input[name="${name}"]:checked`);
-    if (!checked) return false;
-  }
-  return true;
-}
-
-// Update progress bar, counting answered questions across pages
-function updateProgressBar(form, progressFill) {
-  const radios = form.querySelectorAll('input[type="radio"]');
-  const names = new Set();
-  radios.forEach(radio => names.add(radio.name));
-
+// Helper: Count how many questions are answered in the current form
+function countAnsweredQuestions(form) {
+  const questionNames = new Set();
+  const inputs = form.querySelectorAll('input[type="radio"]');
+  inputs.forEach(input => questionNames.add(input.name));
+  
   let answeredCount = 0;
-  names.forEach(name => {
+  questionNames.forEach(name => {
     if (form.querySelector(`input[name="${name}"]:checked`)) {
       answeredCount++;
     }
   });
-
-  // Calculate how many questions user has answered in total (including previous page)
-  let prevAnswered = Number(localStorage.getItem('answeredCount')) || 0;
-  // If on likert.html, progress counts q answered here only
-  // If on scenario.html, add previous (likert) count from localStorage
-
-  let currentPageAnswered = answeredCount;
-  let totalAnswered = currentPageAnswered;
-
-  // We check the page to decide how to count totalAnswered for progress bar
-  if (window.location.pathname.includes('scenario.html')) {
-    // Scenario page adds previously answered questions (stored in localStorage)
-    totalAnswered = prevAnswered + currentPageAnswered;
-  }
-
-  // Update bar width
-  const percent = (totalAnswered / TOTAL_QUESTIONS) * 100;
-  progressFill.style.width = `${percent}%`;
+  return answeredCount;
 }
 
-// Assign points from the form
+// Update progress bar function
+function updateProgressBar(form) {
+  const answered = countAnsweredQuestions(form);
+  const progressPercent = (answered / TOTAL_QUESTIONS) * 100;
+  const progressFill = form.querySelector('#progressFill');
+  if (progressFill) {
+    progressFill.style.width = progressPercent + '%';
+  }
+}
+
+// Assign points from checked inputs on the current page
 function assignPoints(formId) {
   const form = document.getElementById(formId);
   const inputs = form.querySelectorAll('input[type="radio"]:checked');
   
+  // Load existing points from localStorage or reset
+  const storedPoints = localStorage.getItem('characterPoints');
+  characterPoints = storedPoints ? JSON.parse(storedPoints) : {};
+  
   inputs.forEach(input => {
-    const { character, points } = parseValue(input.value);
-    addPoints(character, points);
+    const val = input.value; // format "Character:Points"
+    const [character, pointsStr] = val.split(':');
+    const points = parseInt(pointsStr, 10);
+    if (!characterPoints[character]) {
+      characterPoints[character] = 0;
+    }
+    characterPoints[character] += points;
   });
 
-  // Update answered questions count for progress bar across pages
-  const answeredCount = inputs.length;
-  let prevAnswered = Number(localStorage.getItem('answeredCount')) || 0;
-
-  // If on scenario.html, add to previous
-  if (window.location.pathname.includes('scenario.html')) {
-    localStorage.setItem('answeredCount', prevAnswered + answeredCount);
-  } else if (window.location.pathname.includes('likert.html')) {
-    // On likert page, reset answeredCount to current (start fresh)
-    localStorage.setItem('answeredCount', answeredCount);
-  }
+  localStorage.setItem('characterPoints', JSON.stringify(characterPoints));
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   const likertForm = document.getElementById('likertQuizForm');
   const scenarioForm = document.getElementById('scenarioQuizForm');
   const resultDisplay = document.getElementById('resultDisplay');
-  const progressFill = document.getElementById('progressFill');
 
   if (likertForm) {
-    updateProgressBar(likertForm, progressFill);
-
-    likertForm.addEventListener('change', () => {
-      updateProgressBar(likertForm, progressFill);
+    // Real-time progress update on radio change
+    likertForm.querySelectorAll('input[type="radio"]').forEach(radio => {
+      radio.addEventListener('change', () => updateProgressBar(likertForm));
     });
+    
+    updateProgressBar(likertForm);
 
     likertForm.addEventListener('submit', e => {
       e.preventDefault();
-      if (!validateForm(likertForm)) {
+      const answered = countAnsweredQuestions(likertForm);
+      const questionCount = new Set([...likertForm.querySelectorAll('input[type="radio"]')].map(input => input.name)).size;
+      if (answered < questionCount) {
         alert('Please answer all questions before continuing.');
         return;
       }
@@ -109,4 +75,43 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  if (scenarioForm
+  if (scenarioForm) {
+    // Real-time progress update on radio change
+    scenarioForm.querySelectorAll('input[type="radio"]').forEach(radio => {
+      radio.addEventListener('change', () => updateProgressBar(scenarioForm));
+    });
+    
+    updateProgressBar(scenarioForm);
+
+    scenarioForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const answered = countAnsweredQuestions(scenarioForm);
+      const questionCount = new Set([...scenarioForm.querySelectorAll('input[type="radio"]')].map(input => input.name)).size;
+      if (answered < questionCount) {
+        alert('Please answer all questions before submitting.');
+        return;
+      }
+      assignPoints('scenarioQuizForm');
+      window.location.href = 'result.html';
+    });
+  }
+
+  if (resultDisplay) {
+    // Show final result
+    const stored = localStorage.getItem('characterPoints');
+    if (stored) {
+      const points = JSON.parse(stored);
+      let bestCharacter = '';
+      let max = -1;
+      for (const [char, score] of Object.entries(points)) {
+        if (score > max) {
+          max = score;
+          bestCharacter = char;
+        }
+      }
+      resultDisplay.textContent = bestCharacter
+        ? `${bestCharacter} — your magical match!`
+        : 'No character found.';
+    }
+  }
+});
