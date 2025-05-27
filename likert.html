@@ -1,14 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Personality Quiz</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Likert Quiz</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
   <div class="container">
+    <h2>Personality Quiz – Part 1</h2>
     <form id="likertQuizForm">
-      <div id="likertQuestions"></div>
+      <div class="question">
+        <p>I value rules and structure.</p>
+        <div class="options">
+          <label><input type="radio" name="q1" value="HG:2"> Strongly Agree</label>
+          <label><input type="radio" name="q1" value="MM:1"> Agree</label>
+          <label><input type="radio" name="q1" value="RW:1"> Neutral</label>
+          <label><input type="radio" name="q1" value="HP:1"> Disagree</label>
+          <label><input type="radio" name="q1" value="DM:2"> Strongly Disagree</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>I act on my emotions without thinking.</p>
+        <div class="options">
+          <label><input type="radio" name="q2" value="HP:2"> Strongly Agree</label>
+          <label><input type="radio" name="q2" value="DM:1"> Agree</label>
+          <label><input type="radio" name="q2" value="NL:1"> Neutral</label>
+          <label><input type="radio" name="q2" value="MM:1"> Disagree</label>
+          <label><input type="radio" name="q2" value="HG:2"> Strongly Disagree</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>I often step in to protect others.</p>
+        <div class="options">
+          <label><input type="radio" name="q3" value="AD:2"> Strongly Agree</label>
+          <label><input type="radio" name="q3" value="HP:1"> Agree</label>
+          <label><input type="radio" name="q3" value="RW:1"> Neutral</label>
+          <label><input type="radio" name="q3" value="SS:1"> Disagree</label>
+          <label><input type="radio" name="q3" value="DM:2"> Strongly Disagree</label>
+        </div>
+      </div>
+
       <button type="submit" class="btn">Next</button>
     </form>
   </div>
