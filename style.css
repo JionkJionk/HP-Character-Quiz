@@ -44,63 +44,20 @@ h1, h2, h3 {
   background-color: #434190;
 }
 
-.question {
+.question-block {
   margin-bottom: 30px;
+  text-align: left;
 }
 
-.options {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
+.question-block p {
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
-.option {
-  background-color: #edf2f7;
-  padding: 12px 20px;
-  width: 100%;
-  max-width: 500px;
-  border-radius: 8px;
+label {
+  display: block;
+  margin-bottom: 8px;
   cursor: pointer;
-  transition: background-color 0.3s;
-  border: 1px solid #cbd5e0;
-}
-
-.option:hover {
-  background-color: #e2e8f0;
-}
-
-.likert-options {
-  display: flex;
-  justify-content: space-between;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.likert-option {
-  background-color: #edf2f7;
-  padding: 10px 14px;
-  border-radius: 6px;
-  cursor: pointer;
-  flex: 1;
-  min-width: 80px;
-  text-align: center;
-  transition: background-color 0.3s;
-  border: 1px solid #cbd5e0;
-}
-
-.likert-option:hover {
-  background-color: #e2e8f0;
-}
-
-.result-container {
-  margin-top: 30px;
-}
-
-.result {
-  font-size: 18px;
-  color: #2d3748;
-  margin-top: 20px;
 }
 
 .progress-bar {
@@ -109,11 +66,18 @@ h1, h2, h3 {
   background-color: #e2e8f0;
   border-radius: 6px;
   overflow: hidden;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .progress-fill {
   height: 100%;
   background-color: #5a67d8;
+  width: 0%;
   transition: width 0.4s ease-in-out;
+}
+
+.result-box {
+  font-size: 24px;
+  color: #2d3748;
+  margin: 30px 0;
 }
