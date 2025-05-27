@@ -1,32 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Likert Scale Quiz</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>Personality Quiz</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
-    <h1>Likert Scale Questions</h1>
     <form id="likertQuizForm">
-      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-      
-      <div class="question-block">
-        <p>I often act before thinking things through.</p>
-        <label><input type="radio" name="q1" value="Harry:5"/> Strongly Agree</label>
-        <label><input type="radio" name="q1" value="Ron:4"/> Agree</label>
-        <label><input type="radio" name="q1" value="Neville:3"/> Neutral</label>
-        <label><input type="radio" name="q1" value="Hermione:2"/> Disagree</label>
-        <label><input type="radio" name="q1" value="Snape:1"/> Strongly Disagree</label>
-      </div>
-
-      <!-- Add more likert questions here, with unique names and value "Character:Points" -->
-
+      <div id="likertQuestions"></div>
       <button type="submit" class="btn">Next</button>
     </form>
   </div>
-
   <script src="script.js"></script>
 </body>
 </html>
