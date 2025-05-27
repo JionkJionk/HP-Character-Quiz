@@ -1,69 +1,58 @@
-body.parchment {
-  font-family: 'Cormorant Garamond', serif;
-  background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
-  background-color: #f6f1d3;
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
   margin: 0;
   padding: 0;
 }
 
 .container {
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 30px;
-  background-color: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  border: 5px double #5c3d1e;
-  border-radius: 20px;
-  margin-top: 5vh;
-}
-
-.centered {
-  text-align: center;
-  margin-top: 20vh;
-}
-
-.title {
-  font-size: 3em;
-  margin-bottom: 10px;
-}
-
-.message {
-  font-size: 1.2em;
-  margin-bottom: 30px;
-}
-
-.start-btn, .submit-btn, .share-btn {
-  font-size: 1.2em;
-  padding: 10px 20px;
-  border: none;
-  background-color: #5c3d1e;
-  color: #fff;
-  cursor: pointer;
-  border-radius: 8px;
-}
-
-.start-btn:hover, .submit-btn:hover, .share-btn:hover {
-  background-color: #422a12;
-}
-
-.character-img {
-  width: 200px;
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: white;
   border-radius: 10px;
-  margin: 20px 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.card-title {
-  font-size: 2em;
-  margin-top: 0;
+h1 {
+  text-align: center;
+  color: #4b2e83;
 }
 
-.card-description {
-  font-size: 1.1em;
-  line-height: 1.5;
+p {
+  font-size: 1.2rem;
 }
 
-/* Character-specific colors */
-.gryffindor { background: linear-gradient(to right, #ae0001, #f2a007); color: white; }
-.slytherin   { background: linear-gradient(to right, #1a472a, #2a623d); color: white; }
-.ravenclaw   { background: linear-gradient(to right, #0e1a40, #5d5d5d); color: white; }
-.hufflepuff  { background: linear-gradient(to right, #f0c75e, #ecb939); color: black; }
+.btn, button {
+  display: inline-block;
+  background: #4b2e83;
+  color: white;
+  padding: 10px 20px;
+  margin-top: 20px;
+  border: none;
+  text-decoration: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.button-group {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.question-block {
+  margin-bottom: 25px;
+}
+
+label {
+  display: block;
+  margin-top: 5px;
+  font-size: 1rem;
+}
+
+.result-box {
+  font-size: 1.5rem;
+  color: #222;
+  text-align: center;
+  margin: 30px 0;
+}
