@@ -2,25 +2,40 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Scenario-Based Quiz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Harry Potter Quiz - Scenario Questions</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <h1>Scenario-Based Questions</h1>
+    <h1>Harry Potter Quiz: Scenario Questions</h1>
+
+    <div class="progress-bar">
+      <div id="progressFill" class="progress-fill"></div>
+    </div>
+
     <form id="scenarioQuizForm">
-      <div class="question-block">
-        <p>You hear someone getting bullied in the hallway. What do you do?</p>
-        <label><input type="radio" name="q1" value="Harry"/> Step in right away.</label>
-        <label><input type="radio" name="q1" value="Hermione"/> Report it to a teacher.</label>
-        <label><input type="radio" name="q1" value="Ron"/> Help if others do first.</label>
-        <label><input type="radio" name="q1" value="Draco"/> Join in the bullying.</label>
+      <div class="question-block question">
+        <h3>3. You find a lost magical artifact. What do you do?</h3>
+        <div class="options">
+          <label><input type="radio" name="q3" value="Hermione:5" /> Research its origin and report it.</label>
+          <label><input type="radio" name="q3" value="Harry:3" /> Keep it safe and use it if necessary.</label>
+          <label><input type="radio" name="q3" value="Ron:2" /> Show it to friends for advice.</label>
+          <label><input type="radio" name="q3" value="Neville:1" /> Leave it where you found it.</label>
+        </div>
       </div>
 
-      <!-- Add more scenario questions here -->
+      <div class="question-block question">
+        <h3>4. During a challenge, you must choose a side: bravery or wisdom. Which do you choose?</h3>
+        <div class="options">
+          <label><input type="radio" name="q4" value="Harry:5" /> Bravery</label>
+          <label><input type="radio" name="q4" value="Hermione:5" /> Wisdom</label>
+          <label><input type="radio" name="q4" value="Ron:3" /> Bravery but with some caution</label>
+          <label><input type="radio" name="q4" value="Luna:2" /> Wisdom, but with an open mind</label>
+        </div>
+      </div>
 
-      <button type="submit" class="btn">Submit</button>
+      <button type="submit" class="btn">See Results</button>
     </form>
   </div>
 
