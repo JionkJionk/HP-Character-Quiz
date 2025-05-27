@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Scenario Questions</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Scenario Quiz</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
   <div class="container">
+    <h2>Personality Quiz – Part 2</h2>
     <form id="scenarioQuizForm">
       <div class="question">
-        <h3>You see a friend being bullied. What do you do?</h3>
+        <p>You see someone being bullied. What do you do?</p>
         <div class="options">
-          <label class="option"><input type="radio" name="q1" value="HP"> Stand up and fight back</label>
-          <label class="option"><input type="radio" name="q1" value="HG"> Get help from a teacher</label>
-          <label class="option"><input type="radio" name="q1" value="RW"> Try to calm things down</label>
-          <label class="option"><input type="radio" name="q1" value="DM"> Watch from a distance</label>
+          <label><input type="radio" name="q4" value="HP:2"> Stand up immediately</label>
+          <label><input type="radio" name="q4" value="RW:1"> Support from the sidelines</label>
+          <label><input type="radio" name="q4" value="NL:1"> Get a teacher</label>
+          <label><input type="radio" name="q4" value="DM:2"> Watch silently</label>
         </div>
       </div>
-      <button type="submit" class="btn">See Results</button>
+
+      <button type="submit" class="btn">See Result</button>
     </form>
   </div>
   <script src="script.js"></script>
