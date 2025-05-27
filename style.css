@@ -1,66 +1,74 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: 'Georgia', serif;
-  background-image: url('https://www.transparenttextures.com/patterns/old-paper.png');
-  background-color: #f2e7c9;
-  color: #4a3e2c;
   margin: 0;
-  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f0f4f8;
   min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container {
+  width: 100%;
   max-width: 700px;
-  margin: auto;
-  padding: 2rem;
-  background: rgba(255, 248, 220, 0.95);
-  border: 2px solid #d6c7a1;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.2);
-  margin-top: 5vh;
-}
-
-h1, h2 {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   text-align: center;
-  font-weight: normal;
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
 }
 
-.question {
-  margin-bottom: 1.5rem;
+/* Old British Parchment Theme */
+body {
+  background: url('https://i.imgur.com/6o9Cz58.jpg') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Garamond', serif;
+  color: #4b3b21;
 }
 
-.options label {
-  display: block;
-  margin-bottom: 0.3rem;
+.container {
+  background-color: rgba(245, 238, 222, 0.9);
+  border: 3px solid #a67c00;
+  box-shadow: 0 0 15px #b59f32;
+}
+
+h1, h2, h3 {
+  margin-bottom: 20px;
+  color: #5a3e1b;
+  text-shadow: 1px 1px 1px #d6c792;
 }
 
 .btn {
   display: inline-block;
-  background-color: #c9aa7e;
+  background-color: #a67c00;
   color: #fff;
-  padding: 10px 20px;
-  text-decoration: none;
-  font-weight: bold;
+  padding: 12px 24px;
+  margin-top: 20px;
   border: none;
   border-radius: 8px;
+  font-size: 16px;
   cursor: pointer;
-  margin: 1rem 0.5rem;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  user-select: none;
 }
 
 .btn:hover {
-  background-color: #b4976a;
+  background-color: #7d6000;
 }
 
-.centered {
-  text-align: center;
-  margin-top: 2rem;
+.result-box {
+  font-size: 24px;
+  margin-top: 20px;
+  font-weight: bold;
 }
 
 .restart-btn {
-  background-color: #a67c52;
-}
-
-.restart-btn:hover {
-  background-color: #8c6b45;
+  margin-top: 40px;
+  padding: 14px 30px;
+  font-size: 18px;
 }
