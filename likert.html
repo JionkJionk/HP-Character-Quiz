@@ -1,55 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Likert Quiz</title>
-  <link rel="stylesheet" href="style.css"/>
+  <title>Likert Scale Quiz</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <div class="centered">
-      <button onclick="history.back()" class="btn">Previous Page</button>
-    </div>
-
-    <h2>Personality Quiz – Part 1</h2>
+    <h1>Likert Scale Questions</h1>
     <form id="likertQuizForm">
-      <div class="question">
-        <p>I value rules and structure.</p>
-        <div class="options">
-          <label><input type="radio" name="q1" value="HG:2"> Strongly Agree</label>
-          <label><input type="radio" name="q1" value="MM:1"> Agree</label>
-          <label><input type="radio" name="q1" value="RW:1"> Neutral</label>
-          <label><input type="radio" name="q1" value="HP:1"> Disagree</label>
-          <label><input type="radio" name="q1" value="DM:2"> Strongly Disagree</label>
-        </div>
+      <div class="question-block">
+        <p>I often act before thinking things through.</p>
+        <label><input type="radio" name="q1" value="Harry"/> Strongly Agree</label>
+        <label><input type="radio" name="q1" value="Ron"/> Agree</label>
+        <label><input type="radio" name="q1" value="Neville"/> Neutral</label>
+        <label><input type="radio" name="q1" value="Hermione"/> Disagree</label>
+        <label><input type="radio" name="q1" value="Snape"/> Strongly Disagree</label>
       </div>
 
-      <div class="question">
-        <p>I act on my emotions without thinking.</p>
-        <div class="options">
-          <label><input type="radio" name="q2" value="HP:2"> Strongly Agree</label>
-          <label><input type="radio" name="q2" value="DM:1"> Agree</label>
-          <label><input type="radio" name="q2" value="NL:1"> Neutral</label>
-          <label><input type="radio" name="q2" value="MM:1"> Disagree</label>
-          <label><input type="radio" name="q2" value="HG:2"> Strongly Disagree</label>
-        </div>
+      <div class="question-block">
+        <p>I like to follow rules and schedules.</p>
+        <label><input type="radio" name="q2" value="Snape"/> Strongly Agree</label>
+        <label><input type="radio" name="q2" value="Hermione"/> Agree</label>
+        <label><input type="radio" name="q2" value="Neville"/> Neutral</label>
+        <label><input type="radio" name="q2" value="Ron"/> Disagree</label>
+        <label><input type="radio" name="q2" value="Harry"/> Strongly Disagree</label>
       </div>
 
-      <div class="question">
-        <p>I often step in to protect others.</p>
-        <div class="options">
-          <label><input type="radio" name="q3" value="AD:2"> Strongly Agree</label>
-          <label><input type="radio" name="q3" value="HP:1"> Agree</label>
-          <label><input type="radio" name="q3" value="RW:1"> Neutral</label>
-          <label><input type="radio" name="q3" value="SS:1"> Disagree</label>
-          <label><input type="radio" name="q3" value="DM:2"> Strongly Disagree</label>
-        </div>
+      <div class="question-block">
+        <p>I enjoy helping and supporting my friends.</p>
+        <label><input type="radio" name="q3" value="Ron"/> Strongly Agree</label>
+        <label><input type="radio" name="q3" value="Neville"/> Agree</label>
+        <label><input type="radio" name="q3" value="Harry"/> Neutral</label>
+        <label><input type="radio" name="q3" value="Hermione"/> Disagree</label>
+        <label><input type="radio" name="q3" value="Draco"/> Strongly Disagree</label>
       </div>
 
       <button type="submit" class="btn">Next</button>
     </form>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
