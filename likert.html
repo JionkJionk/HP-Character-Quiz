@@ -2,24 +2,40 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Likert Scale Quiz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Harry Potter Quiz - Likert Questions</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <h1>Likert Scale Questions</h1>
+    <h1>Harry Potter Quiz: Likert Questions</h1>
+
+    <div class="progress-bar">
+      <div id="progressFill" class="progress-fill"></div>
+    </div>
+
     <form id="likertQuizForm">
-      <div class="question-block">
-        <p>I often act before thinking things through.</p>
-        <label><input type="radio" name="q1" value="Harry"/> Strongly Agree</label>
-        <label><input type="radio" name="q1" value="Ron"/> Agree</label>
-        <label><input type="radio" name="q1" value="Neville"/> Neutral</label>
-        <label><input type="radio" name="q1" value="Hermione"/> Disagree</label>
-        <label><input type="radio" name="q1" value="Snape"/> Strongly Disagree</label>
+      <div class="question-block question">
+        <h3>1. I enjoy being the center of attention.</h3>
+        <div class="likert-options">
+          <label><input type="radio" name="q1" value="Harry:5" /> Strongly Agree</label>
+          <label><input type="radio" name="q1" value="Ron:3" /> Agree</label>
+          <label><input type="radio" name="q1" value="Hermione:1" /> Neutral</label>
+          <label><input type="radio" name="q1" value="Neville:0" /> Disagree</label>
+          <label><input type="radio" name="q1" value="Luna:0" /> Strongly Disagree</label>
+        </div>
       </div>
 
-      <!-- Add more likert-style questions here -->
+      <div class="question-block question">
+        <h3>2. I tend to rely on logic rather than emotions when making decisions.</h3>
+        <div class="likert-options">
+          <label><input type="radio" name="q2" value="Hermione:5" /> Strongly Agree</label>
+          <label><input type="radio" name="q2" value="Luna:3" /> Agree</label>
+          <label><input type="radio" name="q2" value="Ron:1" /> Neutral</label>
+          <label><input type="radio" name="q2" value="Neville:0" /> Disagree</label>
+          <label><input type="radio" name="q2" value="Harry:0" /> Strongly Disagree</label>
+        </div>
+      </div>
 
       <button type="submit" class="btn">Next</button>
     </form>
