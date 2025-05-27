@@ -6,14 +6,13 @@
   <title>Your Result</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body class="parchment">
-  <div class="container" id="result-card">
-    <h1 id="character-name" class="card-title"></h1>
-    <img id="character-img" src="" alt="" class="character-img"/>
-    <p id="character-desc" class="card-description"></p>
-    <button class="share-btn" onclick="shareResult()">Share</button>
-    <button onclick="location.href='index.html'" class="start-btn">Back to Start</button>
+<body>
+  <div class="container">
+    <h1>Your Character Match:</h1>
+    <div id="resultDisplay" class="result-box"></div>
+    <a href="index.html" class="btn">Try Again</a>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
