@@ -2,19 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Likert Scale Quiz</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
     <h1>Likert Scale Questions</h1>
-    
-    <div class="progress-bar">
-      <div class="progress-fill" id="progressFill"></div>
-    </div>
-    
     <form id="likertQuizForm">
+      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+      
       <div class="question-block">
         <p>I often act before thinking things through.</p>
         <label><input type="radio" name="q1" value="Harry:5"/> Strongly Agree</label>
@@ -24,23 +21,7 @@
         <label><input type="radio" name="q1" value="Snape:1"/> Strongly Disagree</label>
       </div>
 
-      <div class="question-block">
-        <p>I enjoy learning and studying new things.</p>
-        <label><input type="radio" name="q2" value="Hermione:5"/> Strongly Agree</label>
-        <label><input type="radio" name="q2" value="Luna:4"/> Agree</label>
-        <label><input type="radio" name="q2" value="Neville:3"/> Neutral</label>
-        <label><input type="radio" name="q2" value="Ron:2"/> Disagree</label>
-        <label><input type="radio" name="q2" value="Draco:1"/> Strongly Disagree</label>
-      </div>
-
-      <div class="question-block">
-        <p>I prefer to lead rather than follow.</p>
-        <label><input type="radio" name="q3" value="Draco:5"/> Strongly Agree</label>
-        <label><input type="radio" name="q3" value="Harry:4"/> Agree</label>
-        <label><input type="radio" name="q3" value="Ron:3"/> Neutral</label>
-        <label><input type="radio" name="q3" value="Neville:2"/> Disagree</label>
-        <label><input type="radio" name="q3" value="Luna:1"/> Strongly Disagree</label>
-      </div>
+      <!-- Add more likert questions here, with unique names and value "Character:Points" -->
 
       <button type="submit" class="btn">Next</button>
     </form>
