@@ -1,28 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Scenario Quiz</title>
-  <link rel="stylesheet" href="style.css"/>
+  <title>Scenario-Based Quiz</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <h2>Personality Quiz – Part 2</h2>
+    <h1>Scenario-Based Questions</h1>
     <form id="scenarioQuizForm">
-      <div class="question">
-        <p>You see someone being bullied. What do you do?</p>
-        <div class="options">
-          <label><input type="radio" name="q4" value="HP:2"> Stand up immediately</label>
-          <label><input type="radio" name="q4" value="RW:1"> Support from the sidelines</label>
-          <label><input type="radio" name="q4" value="NL:1"> Get a teacher</label>
-          <label><input type="radio" name="q4" value="DM:2"> Watch silently</label>
-        </div>
+      <div class="question-block">
+        <p>You hear someone getting bullied in the hallway. What do you do?</p>
+        <label><input type="radio" name="q1" value="Harry"/> Step in right away.</label>
+        <label><input type="radio" name="q1" value="Hermione"/> Report it to a teacher.</label>
+        <label><input type="radio" name="q1" value="Ron"/> Help if others do first.</label>
+        <label><input type="radio" name="q1" value="Draco"/> Join in the bullying.</label>
       </div>
 
-      <button type="submit" class="btn">See Result</button>
+      <div class="question-block">
+        <p>When faced with a tough challenge, you:</p>
+        <label><input type="radio" name="q2" value="Hermione"/> Plan carefully and study.</label>
+        <label><input type="radio" name="q2" value="Harry"/> Trust your instincts.</label>
+        <label><input type="radio" name="q2" value="Ron"/> Ask friends for support.</label>
+        <label><input type="radio" name="q2" value="Draco"/> Try to take control forcefully.</label>
+      </div>
+
+      <button type="submit" class="btn">Submit</button>
     </form>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
