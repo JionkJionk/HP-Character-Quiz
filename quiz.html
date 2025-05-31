@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Harry Potter Quiz</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container center">
+    <div id="quiz-container">
+      <div id="question-number"></div>
+      <div id="question-text"></div>
+
+      <div class="answers">
+        <div class="agree-label">Agree</div>
+        <div class="answer-options">
+          <label class="answer-circle answer-circle-1">
+            <input type="radio" name="answer" value="1" />
+          </label>
+          <label class="answer-circle answer-circle-2">
+            <input type="radio" name="answer" value="2" />
+          </label>
+          <label class="answer-circle answer-circle-3">
+            <input type="radio" name="answer" value="3" />
+          </label>
+          <label class="answer-circle answer-circle-4">
+            <input type="radio" name="answer" value="4" />
+          </label>
+          <label class="answer-circle answer-circle-5">
+            <input type="radio" name="answer" value="5" />
+          </label>
+        </div>
+        <div class="disagree-label">Disagree</div>
+      </div>
+
+      <div class="buttons">
+        <button id="prev-btn" class="btn" disabled>Previous</button>
+        <button id="next-btn" class="btn">Next</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
