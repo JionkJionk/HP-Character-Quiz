@@ -1,49 +1,41 @@
-// Sample questions with answers and character points
+// script.js
+
+// Sample questions and answers with character point mappings
 const questions = [
   {
-    text: "I would risk getting in trouble to stand up for a friend.",
+    question: "I enjoy taking risks even if it might get me into trouble.",
     answers: [
-      { value: "a", points: { HP: 2, RW: 2, NL: 1 } },
-      { value: "b", points: { HG: 1, MM: 1, AD: 1 } },
-      { value: "c", points: {} },
-      { value: "d", points: { DM: 2, SS: 1 } },
-      { value: "e", points: { RH: 1 } }
-    ]
+      { value: "a", points: { HP: 3, RW: 2, NL: 1 } }, // Strongly agree (large green)
+      { value: "b", points: { HP: 2, RW: 1 } },       // Agree (medium green)
+      { value: "c", points: {} },                      // Neutral (small beige)
+      { value: "d", points: { DM: 2, SS: 1 } },       // Disagree (medium red)
+      { value: "e", points: { DM: 3, SS: 2 } },       // Strongly disagree (large red)
+    ],
   },
   {
-    text: "I prefer to have a plan before doing something new.",
+    question: "I like to plan ahead rather than act on impulse.",
     answers: [
-      { value: "a", points: { HG: 3, MM: 2, AD: 2 } },
-      { value: "b", points: { NL: 1, RH: 1 } },
+      { value: "a", points: { HG: 3, MM: 2, AD: 1 } },
+      { value: "b", points: { HG: 2, MM: 1 } },
       { value: "c", points: {} },
-      { value: "d", points: { RW: 1, HP: 1 } },
-      { value: "e", points: { DM: 2, SS: 2 } }
-    ]
+      { value: "d", points: { RW: 2, HP: 1 } },
+      { value: "e", points: { RW: 3, HP: 2 } },
+    ],
   },
   {
-    text: "I tend to stick to the rules unless I absolutely need to break them.",
+    question: "I prefer to stay in the background and avoid attention.",
     answers: [
-      { value: "a", points: { MM: 3, AD: 3 } },
-      { value: "b", points: { HG: 1, NL: 1 } },
+      { value: "a", points: { NL: 3, RH: 2 } },
+      { value: "b", points: { NL: 2 } },
       { value: "c", points: {} },
-      { value: "d", points: { RW: 1, HP: 1 } },
-      { value: "e", points: { DM: 2, SS: 2 } }
-    ]
+      { value: "d", points: { HP: 2, AD: 1 } },
+      { value: "e", points: { HP: 3, AD: 2 } },
+    ],
   },
-  {
-    text: "I always try to understand the deeper truth behind every situation.",
-    answers: [
-      { value: "a", points: { AD: 3, SS: 2, HG: 1 } },
-      { value: "b", points: { MM: 1, HP: 1 } },
-      { value: "c", points: {} },
-      { value: "d", points: { DM: 1, RW: 1 } },
-      { value: "e", points: { NL: 1 } }
-    ]
-  }
 ];
 
 let currentQuestionIndex = 0;
-let scores = {
+const scores = {
   HP: 0,
   HG: 0,
   RW: 0,
@@ -55,50 +47,63 @@ let scores = {
   SS: 0,
 };
 
-const questionText = document.getElementById("question-text");
+const questionTextEl = document.getElementById("question-text");
 const answerForm = document.getElementById("answer-form");
 const nextBtn = document.getElementById("next-btn");
 
-function loadQuestion() {
-  const currentQ = questions[currentQuestionIndex];
-  questionText.textContent = currentQ.text;
+function loadQuestion(index) {
+  const q = questions[index];
+  questionTextEl.textContent = q.question;
 
   // Clear previous answers
-  const inputs = answerForm.querySelectorAll('input[type="radio"]');
-  inputs.forEach(input => {
-    input.checked = false;
+  const radios = answerForm.querySelectorAll('input[type="radio"]');
+  radios.forEach((r) => {
+    r.checked = false;
   });
 
+  // Enable/disable next button
   nextBtn.disabled = true;
 }
 
-answerForm.addEventListener("change", () => {
-  nextBtn.disabled = false;
+answerForm.addEventListener("change", (e) => {
+  // Enable Next button only if any radio is checked
+  const anyChecked = [...answerForm.elements["answer"]].some((el) => el.checked);
+  nextBtn.disabled = !anyChecked;
 });
 
 answerForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  const selected = answerForm.answer.value;
-  const currentQ = questions[currentQuestionIndex];
-  const selectedAnswer = currentQ.answers.find(ans => ans.value === selected);
+  // Get selected answer value
+  const selected = [...answerForm.elements["answer"]].find((el) => el.checked);
+  if (!selected) {
+    alert("Please select an answer before proceeding.");
+    return;
+  }
 
-  // Add points for selected answer
-  for (const [char, pts] of Object.entries(selectedAnswer.points)) {
-    scores[char] += pts;
+  // Add points to scores
+  const answerPoints = questions[currentQuestionIndex].answers.find(
+    (ans) => ans.value === selected.value
+  ).points;
+
+  for (const char in answerPoints) {
+    if (scores.hasOwnProperty(char)) {
+      scores[char] += answerPoints[char];
+    }
   }
 
   currentQuestionIndex++;
 
   if (currentQuestionIndex < questions.length) {
-    loadQuestion();
-    nextBtn.disabled = true;
+    loadQuestion(currentQuestionIndex);
   } else {
-    // Save scores to localStorage and redirect to result page
+    // Save scores and go to result page
     localStorage.setItem("hpQuizScores", JSON.stringify(scores));
     window.location.href = "result.html";
   }
 });
 
-// Initialize first question on load
-loadQuestion();
+// Initialize first question on page load
+window.addEventListener("DOMContentLoaded", () => {
+  loadQuestion(currentQuestionIndex);
+});
