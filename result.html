@@ -2,34 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Your Result</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="container">
-    <h1>You Are...</h1>
-    <div id="character-name"></div>
-    <div id="character-description"></div>
+    <h2>Your Result:</h2>
+    <div id="result-character">Loading...</div>
+    <p id="result-description"></p>
+    <a href="quiz.html"><button>Try Again</button></a>
   </div>
-  <script>
-    const characterMap = {
-      HP: 'Harry Potter',
-      HG: 'Hermione Granger',
-      RW: 'Ron Weasley',
-      DM: 'Draco Malfoy',
-      NL: 'Neville Longbottom',
-      AD: 'Albus Dumbledore',
-      MM: 'Minerva McGonagall',
-      RH: 'Rubeus Hagrid',
-      SS: 'Severus Snape'
-    };
-
-    const result = localStorage.getItem('result');
-    const description = localStorage.getItem('description');
-
-    document.getElementById('character-name').innerText = characterMap[result] || 'Unknown';
-    document.getElementById('character-description').innerText = description || '';
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
