@@ -2,7 +2,7 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f7f1e1; /* lighter beige background */
+  background-color: #f7f1e1; /* lighter parchment beige */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,6 +18,12 @@ body {
   padding: 30px 40px;
   box-shadow: 4px 4px 12px rgba(0,0,0,0.1);
   text-align: center;
+}
+
+/* Titles */
+h1 {
+  color: #4a3f35;
+  margin-bottom: 20px;
 }
 
 /* Question text */
@@ -75,13 +81,12 @@ body {
 /* Custom bubbles */
 .custom-bubble {
   display: inline-block;
-  background-color: #c2b280; /* light brown */
-  border: 2px solid #6f4e37;
+  border: 2px solid;
   border-radius: 50%;
   transition: background-color 0.3s, border-color 0.3s;
 }
 
-/* Sizes for bubbles: largest on outer edges, smallest in center */
+/* Sizes for bubbles */
 .size-large .custom-bubble {
   width: 40px;
   height: 40px;
@@ -97,29 +102,22 @@ body {
   height: 20px;
 }
 
+/* Colors based on side */
+.left-side .custom-bubble {
+  background-color: #8bc34a;  /* green */
+  border-color: #558b2f;
+}
+
+.right-side .custom-bubble {
+  background-color: #ef5350; /* red */
+  border-color: #b71c1c;
+}
+
+.neutral-side .custom-bubble {
+  background-color: #c2b280; /* parchment beige */
+  border-color: #6f4e37;
+}
+
 /* When selected */
 .answer-label input[type="radio"]:checked + .custom-bubble {
-  background-color: #6f4e37;
-  border-color: #4a3f35;
-}
-
-/* Next button */
-#next-btn {
-  padding: 12px 25px;
-  font-size: 1.1rem;
-  background-color: #6f4e37;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-#next-btn:hover {
-  background-color: #4a3f35;
-}
-
-#next-btn:disabled {
-  background-color: #b4a37a;
-  cursor: not-allowed;
-}
+  box-shadow: 0 0 8px 3px rgba(0,0,0,0
