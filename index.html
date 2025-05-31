@@ -3,14 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Harry Potter Personality Quiz</title>
+  <title>Harry Potter Quiz - Welcome</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="container center-content">
-    <h1>Harry Potter Personality Quiz</h1>
-    <p>Find out which Harry Potter character you are!</p>
-    <a href="quiz.html" class="btn">Start Quiz</a>
+  <div class="quiz-container">
+    <h1>Welcome to the Harry Potter Character Quiz</h1>
+    <p>Find out which Harry Potter character you are most like!</p>
+    <button id="start-btn">Start Quiz</button>
   </div>
+
+  <script>
+    document.getElementById("start-btn").addEventListener("click", () => {
+      window.location.href = "quiz.html";
+    });
+  </script>
 </body>
 </html>
