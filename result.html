@@ -3,18 +3,66 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Result - Harry Potter Personality Quiz</title>
+  <title>Harry Potter Quiz - Result</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="container center-content">
-    <h1>Your Character Match:</h1>
-    <h2 id="result">Loading...</h2>
-    <p id="character-description"></p>
-    <a href="quiz.html" class="btn">Retake Quiz</a>
-    <a href="index.html" class="btn">Back to Home</a>
+  <div class="quiz-container">
+    <h1>Your Harry Potter Character Match</h1>
+    <div id="result-character" class="result-box">
+      Loading...
+    </div>
+    <div id="result-description" class="result-description"></div>
+    <button id="restart-btn">Take Quiz Again</button>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    const characterDescriptions = {
+      HP: "Harry Potter: Brave, loyal, and selfless, Harry always stands up for his friends and fights for what's right.",
+      HG: "Hermione Granger: Intelligent and hardworking, Hermione values knowledge and justice.",
+      RW: "Ron Weasley: Loyal and funny, Ron always supports his friends through thick and thin.",
+      DM: "Draco Malfoy: Proud and ambitious, Draco is complex but deeply tied to his family and status.",
+      NL: "Neville Longbottom: Quiet but brave, Neville grows into a true hero over time.",
+      AD: "Albus Dumbledore: Wise and mysterious, Dumbledore guides others with deep knowledge.",
+      MM: "Minerva McGonagall: Strict but fair, McGonagall is a powerful protector and teacher.",
+      RH: "Rubeus Hagrid: Gentle and kind-hearted, Hagrid loves magical creatures and cares deeply for friends.",
+      SS: "Severus Snape: Complex and brooding, Snape has a deep sense of loyalty and sacrifice."
+    };
+
+    function getHighestScore(scores) {
+      let maxPoints = -Infinity;
+      let bestChar = null;
+      for (const [char, points] of Object.entries(scores)) {
+        if (points > maxPoints) {
+          maxPoints = points;
+          bestChar = char;
+        }
+      }
+      return bestChar;
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const scoresStr = localStorage.getItem("hpQuizScores");
+      if (!scoresStr) {
+        document.getElementById("result-character").textContent = "No quiz data found.";
+        return;
+      }
+      const scores = JSON.parse(scoresStr);
+      const bestChar = getHighestScore(scores);
+
+      if (!bestChar) {
+        document.getElementById("result-character").textContent = "Unable to determine result.";
+        return;
+      }
+
+      document.getElementById("result-character").textContent = bestChar;
+      document.getElementById("result-description").textContent = characterDescriptions[bestChar] || "Description not found.";
+
+      document.getElementById("restart-btn").addEventListener("click", () => {
+        localStorage.removeItem("hpQuizScores");
+        window.location.href = "index.html";
+      });
+    });
+  </script>
 </body>
 </html>
