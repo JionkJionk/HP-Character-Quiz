@@ -1,77 +1,125 @@
+/* Background and container */
 body {
   margin: 0;
-  font-family: Georgia, serif;
-  background-color: #fdf6e3;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f7f1e1; /* lighter beige background */
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   height: 100vh;
 }
 
-.container, .quiz-container {
-  background-color: #fbeec1;
-  border: 2px solid #a67c52;
-  padding: 40px;
-  border-radius: 12px;
-  max-width: 700px;
+.quiz-container {
+  background-color: #e4d7b7; /* parchment beige */
+  border: 2px solid #6f4e37; /* thin brown border */
+  border-radius: 8px;
   width: 90%;
+  max-width: 700px;
+  padding: 30px 40px;
+  box-shadow: 4px 4px 12px rgba(0,0,0,0.1);
   text-align: center;
 }
 
-button {
-  background-color: #a67c52;
-  color: white;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 6px;
-  font-size: 1em;
-  cursor: pointer;
-  margin-top: 20px;
+/* Question text */
+#question-text {
+  margin-bottom: 25px;
+  font-size: 1.4rem;
+  color: #4a3f35;
 }
 
-h1, h2 {
-  color: #4a2f1f;
-}
-
-.question {
-  margin-bottom: 30px;
-}
-
-.options {
+/* Answers row */
+.answers-row {
   display: flex;
   justify-content: center;
-  gap: 15px;
-  margin-top: 10px;
-}
-
-.options label {
-  display: flex;
-  flex-direction: column;
   align-items: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  user-select: none;
+}
+
+/* Agree/Disagree labels */
+.agree-disagree-label {
+  font-weight: 600;
+  color: #6f4e37;
+  width: 60px;
+  font-size: 1rem;
+}
+
+.agree-label {
+  text-align: right;
+  margin-right: 10px;
+}
+
+.disagree-label {
+  text-align: left;
+  margin-left: 10px;
+}
+
+/* Answer labels and bubbles */
+.answer-label {
   cursor: pointer;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.circle {
+/* Hide native radio buttons */
+.answer-label input[type="radio"] {
+  opacity: 0;
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+/* Custom bubbles */
+.custom-bubble {
   display: inline-block;
+  background-color: #c2b280; /* light brown */
+  border: 2px solid #6f4e37;
   border-radius: 50%;
-  background-color: #a67c52;
+  transition: background-color 0.3s, border-color 0.3s;
 }
 
-.large {
-  width: 28px;
-  height: 28px;
+/* Sizes for bubbles: largest on outer edges, smallest in center */
+.size-large .custom-bubble {
+  width: 40px;
+  height: 40px;
 }
 
-.medium {
+.size-medium .custom-bubble {
+  width: 30px;
+  height: 30px;
+}
+
+.size-small .custom-bubble {
   width: 20px;
   height: 20px;
 }
 
-.small {
-  width: 12px;
-  height: 12px;
+/* When selected */
+.answer-label input[type="radio"]:checked + .custom-bubble {
+  background-color: #6f4e37;
+  border-color: #4a3f35;
 }
 
-input[type="radio"] {
-  display: none;
+/* Next button */
+#next-btn {
+  padding: 12px 25px;
+  font-size: 1.1rem;
+  background-color: #6f4e37;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#next-btn:hover {
+  background-color: #4a3f35;
+}
+
+#next-btn:disabled {
+  background-color: #b4a37a;
+  cursor: not-allowed;
 }
