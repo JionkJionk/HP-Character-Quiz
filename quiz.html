@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Harry Potter Character Quiz</title>
+  <title>Harry Potter Quiz - Questions</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -13,29 +13,29 @@
       <form id="answer-form">
         <div class="answers-row">
           <span class="agree-disagree-label agree-label">Agree</span>
-          <label class="answer-label size-large">
+          <label class="answer-label size-large left-side">
             <input type="radio" name="answer" value="a" required />
             <span class="custom-bubble"></span>
           </label>
-          <label class="answer-label size-medium">
+          <label class="answer-label size-medium left-side">
             <input type="radio" name="answer" value="b" />
             <span class="custom-bubble"></span>
           </label>
-          <label class="answer-label size-small">
+          <label class="answer-label size-small neutral-side">
             <input type="radio" name="answer" value="c" />
             <span class="custom-bubble"></span>
           </label>
-          <label class="answer-label size-medium">
+          <label class="answer-label size-medium right-side">
             <input type="radio" name="answer" value="d" />
             <span class="custom-bubble"></span>
           </label>
-          <label class="answer-label size-large">
+          <label class="answer-label size-large right-side">
             <input type="radio" name="answer" value="e" />
             <span class="custom-bubble"></span>
           </label>
           <span class="agree-disagree-label disagree-label">Disagree</span>
         </div>
-        <button type="submit" id="next-btn">Next</button>
+        <button type="submit" id="next-btn" disabled>Next</button>
       </form>
     </div>
   </div>
