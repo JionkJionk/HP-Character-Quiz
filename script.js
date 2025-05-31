@@ -1,71 +1,39 @@
-let characterPoints = {};
+document.getElementById("quizForm").addEventListener("submit", function(e) {
+  e.preventDefault();
 
-function assignPoints(formId) {
-  const form = document.getElementById(formId);
-  const inputs = form.querySelectorAll('input[type="radio"]:checked');
+  // Sample scoring map for demonstration (2 questions)
+  const scores = {
+    HP: 0, HG: 0, RW: 0, DM: 0, NL: 0, AD: 0, MM: 0, RH: 0, SS: 0
+  };
 
-  // Check if all questions answered
-  const questions = new Set();
-  inputs.forEach(input => questions.add(input.name));
-  const totalQuestions = form.querySelectorAll('.question-block').length;
-  if (questions.size !== totalQuestions) {
-    alert('Please answer all questions before continuing.');
-    return false;
-  }
-
-  inputs.forEach(input => {
-    const character = input.value;
-    if (!characterPoints[character]) {
-      characterPoints[character] = 0;
+  const answers = {
+    q1: {
+      a: { HP: 3, RW: 2, NL: 2 },
+      b: { HP: 2, RW: 1 },
+      c: {},
+      d: { SS: 1 },
+      e: { DM: 2 }
+    },
+    q2: {
+      a: { HG: 2, MM: 2 },
+      b: { HG: 1 },
+      c: {},
+      d: { RW: 1 },
+      e: { HP: 1 }
     }
-    characterPoints[character]++;
-  });
+  };
 
-  localStorage.setItem('characterPoints', JSON.stringify(characterPoints));
-  return true;
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  const likertForm = document.getElementById('likertQuizForm');
-  const scenarioForm = document.getElementById('scenarioQuizForm');
-  const resultDisplay = document.getElementById('resultDisplay');
-
-  if (likertForm) {
-    likertForm.addEventListener('submit', e => {
-      e.preventDefault();
-      if (assignPoints('likertQuizForm')) {
-        window.location.href = 'scenario.html';
+  const formData = new FormData(document.getElementById("quizForm"));
+  for (const [q, val] of formData.entries()) {
+    const pointMap = answers[q]?.[val];
+    if (pointMap) {
+      for (const char in pointMap) {
+        scores[char] += pointMap[char];
       }
-    });
-  }
-
-  if (scenarioForm) {
-    scenarioForm.addEventListener('submit', e => {
-      e.preventDefault();
-      if (assignPoints('scenarioQuizForm')) {
-        window.location.href = 'result.html';
-      }
-    });
-  }
-
-  if (resultDisplay) {
-    const stored = localStorage.getItem('characterPoints');
-    if (stored) {
-      const points = JSON.parse(stored);
-      let bestCharacter = '';
-      let max = -1;
-      for (const [char, score] of Object.entries(points)) {
-        if (score > max) {
-          max = score;
-          bestCharacter = char;
-        }
-      }
-
-      resultDisplay.textContent = bestCharacter
-        ? `${bestCharacter} — your magical match!`
-        : 'No character found.';
     }
-    // Clear points for a fresh start next time
-    localStorage.removeItem('characterPoints');
   }
+
+  const result = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
+  localStorage.setItem("resultCharacter", result);
+  window.location.href = "result.html";
 });
