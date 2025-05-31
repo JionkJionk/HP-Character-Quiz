@@ -2,44 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Harry Potter Quiz - Questions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Harry Potter Personality Quiz</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="quiz-container">
-    <div id="question-box">
-      <h2 id="question-text">Question will appear here</h2>
-      <form id="answer-form">
-        <div class="answers-row">
-          <span class="agree-disagree-label agree-label">Agree</span>
-          <label class="answer-label size-large left-side">
-            <input type="radio" name="answer" value="a" required />
-            <span class="custom-bubble"></span>
-          </label>
-          <label class="answer-label size-medium left-side">
-            <input type="radio" name="answer" value="b" />
-            <span class="custom-bubble"></span>
-          </label>
-          <label class="answer-label size-small neutral-side">
-            <input type="radio" name="answer" value="c" />
-            <span class="custom-bubble"></span>
-          </label>
-          <label class="answer-label size-medium right-side">
-            <input type="radio" name="answer" value="d" />
-            <span class="custom-bubble"></span>
-          </label>
-          <label class="answer-label size-large right-side">
-            <input type="radio" name="answer" value="e" />
-            <span class="custom-bubble"></span>
-          </label>
-          <span class="agree-disagree-label disagree-label">Disagree</span>
-        </div>
-        <button type="submit" id="next-btn" disabled>Next</button>
-      </form>
-    </div>
+  <div class="container">
+    <h1>Harry Potter Personality Quiz</h1>
+    <form id="quiz-form">
+      <!-- Questions inserted here by JavaScript -->
+    </form>
+    <button id="submit-btn" disabled>Submit</button>
   </div>
-
   <script src="script.js"></script>
 </body>
 </html>
