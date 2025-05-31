@@ -1,109 +1,86 @@
-// script.js
-
-// Sample questions and answers with character point mappings
 const questions = [
   {
-    question: "I enjoy taking risks even if it might get me into trouble.",
-    answers: [
-      { value: "a", points: { HP: 3, RW: 2, NL: 1 } }, // Strongly agree (large green)
-      { value: "b", points: { HP: 2, RW: 1 } },       // Agree (medium green)
-      { value: "c", points: {} },                      // Neutral (small beige)
-      { value: "d", points: { DM: 2, SS: 1 } },       // Disagree (medium red)
-      { value: "e", points: { DM: 3, SS: 2 } },       // Strongly disagree (large red)
-    ],
+    text: "You follow school rules even when no one is watching.",
+    values: { HG: 2, MM: 2, HP: -1, DM: -2 }
   },
   {
-    question: "I like to plan ahead rather than act on impulse.",
-    answers: [
-      { value: "a", points: { HG: 3, MM: 2, AD: 1 } },
-      { value: "b", points: { HG: 2, MM: 1 } },
-      { value: "c", points: {} },
-      { value: "d", points: { RW: 2, HP: 1 } },
-      { value: "e", points: { RW: 3, HP: 2 } },
-    ],
+    text: "You'd risk getting into trouble to help a friend.",
+    values: { HP: 2, RW: 2, DM: -1, MM: -1 }
   },
   {
-    question: "I prefer to stay in the background and avoid attention.",
-    answers: [
-      { value: "a", points: { NL: 3, RH: 2 } },
-      { value: "b", points: { NL: 2 } },
-      { value: "c", points: {} },
-      { value: "d", points: { HP: 2, AD: 1 } },
-      { value: "e", points: { HP: 3, AD: 2 } },
-    ],
+    text: "You enjoy being the center of attention.",
+    values: { DM: 2, HP: 1, RW: -1, SS: -2 }
   },
+  {
+    text: "You’re often underestimated but prove others wrong.",
+    values: { NL: 2, HP: 1, RH: 1, SS: 1 }
+  }
+  // Add more questions here
 ];
 
-let currentQuestionIndex = 0;
-const scores = {
-  HP: 0,
-  HG: 0,
-  RW: 0,
-  DM: 0,
-  NL: 0,
-  AD: 0,
-  MM: 0,
-  RH: 0,
-  SS: 0,
-};
+const characters = ['HP', 'HG', 'RW', 'DM', 'NL', 'AD', 'MM', 'RH', 'SS'];
 
-const questionTextEl = document.getElementById("question-text");
-const answerForm = document.getElementById("answer-form");
-const nextBtn = document.getElementById("next-btn");
+const form = document.getElementById('quiz-form');
+const submitBtn = document.getElementById('submit-btn');
 
-function loadQuestion(index) {
-  const q = questions[index];
-  questionTextEl.textContent = q.question;
+// Generate the full form with all questions at once
+questions.forEach((q, index) => {
+  const wrapper = document.createElement('div');
+  wrapper.classList.add('question-block');
+  wrapper.innerHTML = `
+    <p class="question-text">${q.text}</p>
+    <div class="answer-row left">
+      <span class="agree-label">Agree</span>
+      ${[5, 4, 3, 2, 1].map((val, i) => `
+        <label>
+          <input type="radio" name="q${index}" value="${val}" />
+          <span class="bubble size-${val}"></span>
+        </label>
+      `).join('')}
+    </div>
+    <div class="answer-row right">
+      ${[1, 2, 3, 4, 5].map((val, i) => `
+        <label>
+          <input type="radio" name="q${index}" value="${-val}" />
+          <span class="bubble size-${val}"></span>
+        </label>
+      `).join('')}
+      <span class="disagree-label">Disagree</span>
+    </div>
+  `;
+  form.appendChild(wrapper);
+});
 
-  // Clear previous answers
-  const radios = answerForm.querySelectorAll('input[type="radio"]');
-  radios.forEach((r) => {
-    r.checked = false;
+// Enable submit only when all questions are answered
+form.addEventListener('change', () => {
+  const allAnswered = questions.every((_, i) => form[`q${i}`].value !== '');
+  submitBtn.disabled = !allAnswered;
+});
+
+submitBtn.addEventListener('click', () => {
+  const scores = Object.fromEntries(characters.map(c => [c, 0]));
+
+  questions.forEach((q, i) => {
+    const val = parseInt(form[`q${i}`].value);
+    for (const [char, score] of Object.entries(q.values)) {
+      scores[char] += score * val;
+    }
   });
 
-  // Enable/disable next button
-  nextBtn.disabled = true;
-}
+  const resultChar = Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0];
+  const descriptions = {
+    HP: "You're brave, loyal, and always willing to do what's right—even when it's hard.",
+    HG: "You're smart, driven, and care deeply about fairness and doing your best.",
+    RW: "You're loyal, funny, and always there when your friends need you.",
+    DM: "You're confident, ambitious, and not afraid to speak your mind.",
+    NL: "You're quiet but powerful, and you grow stronger with every challenge.",
+    AD: "You're wise, calm, and always one step ahead.",
+    MM: "You're strict but fair, and always stand up for what you believe in.",
+    RH: "You're kind-hearted, brave, and love creatures big and small.",
+    SS: "You're complex, intelligent, and more heroic than most people realize."
+  };
 
-answerForm.addEventListener("change", (e) => {
-  // Enable Next button only if any radio is checked
-  const anyChecked = [...answerForm.elements["answer"]].some((el) => el.checked);
-  nextBtn.disabled = !anyChecked;
-});
-
-answerForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  // Get selected answer value
-  const selected = [...answerForm.elements["answer"]].find((el) => el.checked);
-  if (!selected) {
-    alert("Please select an answer before proceeding.");
-    return;
-  }
-
-  // Add points to scores
-  const answerPoints = questions[currentQuestionIndex].answers.find(
-    (ans) => ans.value === selected.value
-  ).points;
-
-  for (const char in answerPoints) {
-    if (scores.hasOwnProperty(char)) {
-      scores[char] += answerPoints[char];
-    }
-  }
-
-  currentQuestionIndex++;
-
-  if (currentQuestionIndex < questions.length) {
-    loadQuestion(currentQuestionIndex);
-  } else {
-    // Save scores and go to result page
-    localStorage.setItem("hpQuizScores", JSON.stringify(scores));
-    window.location.href = "result.html";
-  }
-});
-
-// Initialize first question on page load
-window.addEventListener("DOMContentLoaded", () => {
-  loadQuestion(currentQuestionIndex);
+  localStorage.setItem('result', resultChar);
+  localStorage.setItem('description', descriptions[resultChar]);
+  window.location.href = 'result.html';
 });
