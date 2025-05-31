@@ -1,40 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Harry Potter Quiz</title>
-  <link rel="stylesheet" href="styles.css"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Harry Potter Character Quiz</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="quiz-container">
-    <form id="quizForm">
-      <div id="questionBox">
-        <!-- Sample Question -->
-        <div class="question">
-          <p>1. I would risk getting in trouble to stand up for a friend.</p>
-          <div class="options">
-            <label><input type="radio" name="q1" value="a" /><span class="circle large"></span></label>
-            <label><input type="radio" name="q1" value="b" /><span class="circle medium"></span></label>
-            <label><input type="radio" name="q1" value="c" /><span class="circle small"></span></label>
-            <label><input type="radio" name="q1" value="d" /><span class="circle medium"></span></label>
-            <label><input type="radio" name="q1" value="e" /><span class="circle large"></span></label>
-          </div>
+    <div id="question-box">
+      <h2 id="question-text">Question will appear here</h2>
+      <form id="answer-form">
+        <div class="answers-row">
+          <span class="agree-disagree-label agree-label">Agree</span>
+          <label class="answer-label size-large">
+            <input type="radio" name="answer" value="a" required />
+            <span class="custom-bubble"></span>
+          </label>
+          <label class="answer-label size-medium">
+            <input type="radio" name="answer" value="b" />
+            <span class="custom-bubble"></span>
+          </label>
+          <label class="answer-label size-small">
+            <input type="radio" name="answer" value="c" />
+            <span class="custom-bubble"></span>
+          </label>
+          <label class="answer-label size-medium">
+            <input type="radio" name="answer" value="d" />
+            <span class="custom-bubble"></span>
+          </label>
+          <label class="answer-label size-large">
+            <input type="radio" name="answer" value="e" />
+            <span class="custom-bubble"></span>
+          </label>
+          <span class="agree-disagree-label disagree-label">Disagree</span>
         </div>
-        <div class="question">
-          <p>2. I prefer to have a plan before doing something new.</p>
-          <div class="options">
-            <label><input type="radio" name="q2" value="a" /><span class="circle large"></span></label>
-            <label><input type="radio" name="q2" value="b" /><span class="circle medium"></span></label>
-            <label><input type="radio" name="q2" value="c" /><span class="circle small"></span></label>
-            <label><input type="radio" name="q2" value="d" /><span class="circle medium"></span></label>
-            <label><input type="radio" name="q2" value="e" /><span class="circle large"></span></label>
-          </div>
-        </div>
-      </div>
-      <button type="submit">See Results</button>
-    </form>
+        <button type="submit" id="next-btn">Next</button>
+      </form>
+    </div>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
