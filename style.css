@@ -1,245 +1,117 @@
-/* styles.css */
-
-/* Body and page background */
-body {
+/* General Reset */
+body, html {
   margin: 0;
+  padding: 0;
   font-family: 'Georgia', serif;
-  background-color: #f7f2e7; /* lighter parchment beige */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  background-color: #f9f4e7; /* lighter parchment */
+  color: #3b2f1d;
+  height: 100%;
 }
 
-/* Container with parchment style */
+/* Centering container */
 .container {
-  background-color: #f4e9d8; /* beige parchment */
-  border: 1.5px solid #8b5e3c; /* thin brown outline */
-  border-radius: 8px;
-  padding: 30px 40px;
-  max-width: 700px;
-  width: 90%;
-  box-shadow: 3px 3px 10px rgba(139, 94, 60, 0.3);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  max-width: 800px;
+  margin: 40px auto;
+  background-color: #f2e2c4; /* parchment color */
+  border: 2px solid #8b5e3c; /* thin brown outline */
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-/* Title styling */
+/* Headings */
 h1 {
-  margin-top: 0;
-  color: #6b4c25;
-  font-weight: bold;
-  font-size: 2.4rem;
+  text-align: center;
+  font-size: 2em;
   margin-bottom: 30px;
+}
+
+/* Question styling */
+.question-block {
+  margin-bottom: 40px;
+}
+
+.question-text {
+  font-size: 1.2em;
+  margin-bottom: 10px;
   text-align: center;
 }
 
-/* Question text */
-#question-text {
-  font-size: 1.4rem;
-  color: #5a3d1b;
-  margin-bottom: 25px;
-  text-align: center;
-  font-weight: 600;
-}
-
-/* Answer form styles */
-#answer-form {
-  width: 100%;
-}
-
-/* Each answer row */
+/* Answer row (centered) */
 .answer-row {
   display: flex;
-  align-items: center;
   justify-content: center;
-  margin: 12px 0;
-  position: relative;
-}
-
-/* The label containing radio and bubble */
-.answer-row label {
-  display: flex;
   align-items: center;
-  cursor: pointer;
-  user-select: none;
+  gap: 15px;
+  margin-top: 10px;
+  flex-wrap: wrap;
 }
 
-/* Hide the actual radio input */
-.answer-row input[type="radio"] {
+/* Labels left/right */
+.agree-label, .disagree-label {
+  font-size: 1em;
+  font-weight: bold;
+  margin: 0 10px;
+}
+
+/* Bubble styles */
+.bubble {
+  display: inline-block;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid #3b2f1d;
+  transition: transform 0.2s ease;
+}
+
+input[type="radio"] {
   display: none;
 }
 
-/* Agree/Disagree text */
-.agree-label,
-.disagree-label {
-  font-weight: 600;
-  color: #4a2c0a;
-  font-size: 1.1rem;
-  width: 60px;
-  text-align: center;
-  user-select: none;
+/* Size and color variants */
+.size-1 { width: 12px; height: 12px; }
+.size-2 { width: 16px; height: 16px; }
+.size-3 { width: 20px; height: 20px; }
+.size-4 { width: 24px; height: 24px; }
+.size-5 { width: 28px; height: 28px; }
+
+input[type="radio"]:checked + .bubble {
+  background-color: #444;
+  transform: scale(1.2);
 }
 
-/* Agree label on left side, Disagree label on right side */
-.agree-label {
-  margin-right: 12px;
-}
-
-.disagree-label {
-  margin-left: 12px;
-}
-
-/* The bubble (circle) */
-.bubble {
-  border-radius: 50%;
-  border: 2.5px solid;
-  margin: 0 10px;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
-  flex-shrink: 0;
-  position: relative;
-}
-
-/* Different sizes for bubbles from center out */
-/* We want 5 bubbles, smallest in the center (neutral) */
-.bubble.size-1 {
-  width: 20px;
-  height: 20px;
-  border-color: #c7b59c; /* neutral beige border */
-}
-
-.bubble.size-2 {
-  width: 28px;
-  height: 28px;
-}
-
-.bubble.size-3 {
-  width: 36px;
-  height: 36px;
-}
-
-.bubble.size-4 {
-  width: 44px;
-  height: 44px;
-}
-
-.bubble.size-5 {
-  width: 52px;
-  height: 52px;
-}
-
-/* Left side bubbles are green shades */
-.answer-row.left .bubble.size-5 {
-  border-color: #2e7d32;
-}
-
-.answer-row.left .bubble.size-4 {
-  border-color: #388e3c;
-}
-
-.answer-row.left .bubble.size-3 {
-  border-color: #43a047;
-}
-
-.answer-row.left .bubble.size-2 {
-  border-color: #66bb6a;
-}
-
-.answer-row.left .bubble.size-1 {
-  border-color: #c7b59c; /* neutral center bubble */
-}
-
-/* Right side bubbles are red shades */
-.answer-row.right .bubble.size-5 {
-  border-color: #c62828;
-}
-
-.answer-row.right .bubble.size-4 {
-  border-color: #d32f2f;
-}
-
-.answer-row.right .bubble.size-3 {
-  border-color: #e53935;
-}
-
-.answer-row.right .bubble.size-2 {
-  border-color: #ef5350;
-}
-
-.answer-row.right .bubble.size-1 {
-  border-color: #c7b59c; /* neutral center bubble */
-}
-
-/* When checked, fill bubble with color */
-.answer-row input[type="radio"]:checked + .bubble.size-5 {
-  background-color: currentColor;
-  border-color: currentColor;
-}
-
-.answer-row input[type="radio"]:checked + .bubble.size-4 {
-  background-color: currentColor;
-  border-color: currentColor;
-}
-
-.answer-row input[type="radio"]:checked + .bubble.size-3 {
-  background-color: currentColor;
-  border-color: currentColor;
-}
-
-.answer-row input[type="radio"]:checked + .bubble.size-2 {
-  background-color: currentColor;
-  border-color: currentColor;
-}
-
-.answer-row input[type="radio"]:checked + .bubble.size-1 {
-  background-color: #c7b59c;
-  border-color: #c7b59c;
-}
-
-/* Green bubbles color */
+/* Green for left (agree), red for right (disagree) */
 .answer-row.left .bubble {
-  color: #2e7d32; /* main green */
+  background-color: #c4f0c5;
 }
-
-/* Red bubbles color */
 .answer-row.right .bubble {
-  color: #c62828; /* main red */
+  background-color: #f5b3b3;
 }
 
-/* Next button style */
-#next-btn {
-  margin-top: 35px;
-  background-color: #8b5e3c;
-  color: #f4e9d8;
-  border: none;
-  padding: 12px 30px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  user-select: none;
-  align-self: center;
+/* Submit button */
+#submit-btn {
   display: block;
-  min-width: 130px;
+  margin: 30px auto 0;
+  padding: 12px 25px;
+  font-size: 1em;
+  background-color: #8b5e3c;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
 }
-
-#next-btn:disabled {
-  background-color: #c7b59c;
+#submit-btn:disabled {
+  background-color: #ccc;
   cursor: not-allowed;
 }
 
-#next-btn:hover:not(:disabled) {
-  background-color: #6f4a24;
-}
-
-/* Character description box on results page */
-#character-description {
-  margin-top: 20px;
-  font-size: 1.2rem;
-  color: #5a3d1b;
+/* Results */
+#character-name {
+  font-size: 1.5em;
   text-align: center;
-  max-width: 650px;
-  line-height: 1.5;
+  margin-top: 20px;
+}
+#character-description {
+  font-size: 1.1em;
+  text-align: center;
+  margin-top: 15px;
 }
