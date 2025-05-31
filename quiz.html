@@ -1,23 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Quiz - Harry Potter Personality Quiz</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Harry Potter Quiz</title>
+  <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
-  <div class="container center-content">
-    <h2>Answer the questions below:</h2>
-    <form id="quiz-form" novalidate>
-      <!-- Questions will be dynamically inserted here -->
-      <button type="submit" id="submit-btn" disabled>Submit</button>
+  <div class="quiz-container">
+    <form id="quizForm">
+      <div id="questionBox">
+        <!-- Sample Question -->
+        <div class="question">
+          <p>1. I would risk getting in trouble to stand up for a friend.</p>
+          <div class="options">
+            <label><input type="radio" name="q1" value="a" /><span class="circle large"></span></label>
+            <label><input type="radio" name="q1" value="b" /><span class="circle medium"></span></label>
+            <label><input type="radio" name="q1" value="c" /><span class="circle small"></span></label>
+            <label><input type="radio" name="q1" value="d" /><span class="circle medium"></span></label>
+            <label><input type="radio" name="q1" value="e" /><span class="circle large"></span></label>
+          </div>
+        </div>
+        <div class="question">
+          <p>2. I prefer to have a plan before doing something new.</p>
+          <div class="options">
+            <label><input type="radio" name="q2" value="a" /><span class="circle large"></span></label>
+            <label><input type="radio" name="q2" value="b" /><span class="circle medium"></span></label>
+            <label><input type="radio" name="q2" value="c" /><span class="circle small"></span></label>
+            <label><input type="radio" name="q2" value="d" /><span class="circle medium"></span></label>
+            <label><input type="radio" name="q2" value="e" /><span class="circle large"></span></label>
+          </div>
+        </div>
+      </div>
+      <button type="submit">See Results</button>
     </form>
-    <div id="character-descriptions" class="character-description-space">
-      <!-- Character descriptions placeholder (optional) -->
-    </div>
   </div>
-
   <script src="script.js"></script>
 </body>
 </html>
