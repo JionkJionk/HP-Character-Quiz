@@ -1,117 +1,76 @@
-/* General Reset */
-body, html {
+body {
+  background-color: #fefbf4;
+  font-family: 'Georgia', serif;
   margin: 0;
   padding: 0;
-  font-family: 'Georgia', serif;
-  background-color: #f9f4e7; /* lighter parchment */
-  color: #3b2f1d;
-  height: 100%;
 }
 
-/* Centering container */
 .container {
-  max-width: 800px;
-  margin: 40px auto;
-  background-color: #f2e2c4; /* parchment color */
-  border: 2px solid #8b5e3c; /* thin brown outline */
-  padding: 30px;
+  max-width: 700px;
+  margin: 50px auto;
+  background-color: #fcf4dd;
+  border: 2px solid #a67c52;
+  padding: 40px;
+  text-align: center;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-/* Headings */
-h1 {
-  text-align: center;
-  font-size: 2em;
-  margin-bottom: 30px;
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  margin-top: 30px;
+  cursor: pointer;
+  background-color: #a67c52;
+  color: white;
+  border: none;
+  border-radius: 5px;
 }
 
-/* Question styling */
-.question-block {
-  margin-bottom: 40px;
+.question {
+  margin: 30px 0;
 }
 
-.question-text {
-  font-size: 1.2em;
-  margin-bottom: 10px;
-  text-align: center;
-}
-
-/* Answer row (centered) */
-.answer-row {
+.scale {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 15px;
+  gap: 12px;
   margin-top: 10px;
-  flex-wrap: wrap;
 }
 
-/* Labels left/right */
-.agree-label, .disagree-label {
-  font-size: 1em;
-  font-weight: bold;
-  margin: 0 10px;
-}
-
-/* Bubble styles */
-.bubble {
+.circle {
   display: inline-block;
   border-radius: 50%;
-  cursor: pointer;
-  border: 2px solid #3b2f1d;
-  transition: transform 0.2s ease;
+  display: inline-block;
+}
+
+.large {
+  width: 26px;
+  height: 26px;
+}
+
+.medium {
+  width: 18px;
+  height: 18px;
+}
+
+.small {
+  width: 12px;
+  height: 12px;
+}
+
+.green {
+  background-color: #4CAF50;
+}
+
+.red {
+  background-color: #f44336;
+}
+
+.gray {
+  background-color: #999;
 }
 
 input[type="radio"] {
   display: none;
-}
-
-/* Size and color variants */
-.size-1 { width: 12px; height: 12px; }
-.size-2 { width: 16px; height: 16px; }
-.size-3 { width: 20px; height: 20px; }
-.size-4 { width: 24px; height: 24px; }
-.size-5 { width: 28px; height: 28px; }
-
-input[type="radio"]:checked + .bubble {
-  background-color: #444;
-  transform: scale(1.2);
-}
-
-/* Green for left (agree), red for right (disagree) */
-.answer-row.left .bubble {
-  background-color: #c4f0c5;
-}
-.answer-row.right .bubble {
-  background-color: #f5b3b3;
-}
-
-/* Submit button */
-#submit-btn {
-  display: block;
-  margin: 30px auto 0;
-  padding: 12px 25px;
-  font-size: 1em;
-  background-color: #8b5e3c;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-#submit-btn:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
-
-/* Results */
-#character-name {
-  font-size: 1.5em;
-  text-align: center;
-  margin-top: 20px;
-}
-#character-description {
-  font-size: 1.1em;
-  text-align: center;
-  margin-top: 15px;
 }
