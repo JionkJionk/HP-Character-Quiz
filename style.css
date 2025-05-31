@@ -1,32 +1,29 @@
-/* Overall page background */
-body {
+/* Reset and base styles */
+body, html {
   margin: 0;
   padding: 0;
+  height: 100%;
   font-family: 'Georgia', serif;
-  background-color: #fdf6e3; /* light parchment background */
+  background-color: #FCF5E5; /* Parchment background */
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
 }
 
-/* Main container box */
 .container {
-  background-color: #f7f1dc; /* parchment beige */
-  border: 2px solid #8b5e3c; /* thin brown border */
-  border-radius: 10px;
+  background-color: #F2E2C4; /* Slightly darker parchment */
+  border: 2px solid #8B5E3C; /* Brown border */
   padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
   max-width: 800px;
   width: 90%;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
   text-align: center;
 }
 
-/* Title styling */
-h1 {
-  font-size: 28px;
-  margin-bottom: 30px;
-  color: #4b2e1e;
+/* Headings */
+h1, h2 {
+  margin-bottom: 20px;
 }
 
 /* Question styling */
@@ -34,99 +31,95 @@ h1 {
   margin-bottom: 30px;
 }
 
-/* Each group of options */
-.options {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10px;
+.question p {
+  font-size: 1.2em;
+  margin-bottom: 10px;
 }
 
-/* Label text for Agree/Disagree */
-.scale-label {
-  font-size: 14px;
-  color: #444;
+/* Scale styling */
+.scale {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.scale span {
+  font-weight: bold;
   margin: 0 10px;
 }
 
-/* Radio inputs styled as circles */
-.option-circle {
-  appearance: none;
-  -webkit-appearance: none;
-  width: 24px;
-  height: 24px;
-  margin: 0 6px;
-  border-radius: 50%;
-  border: 2px solid #555;
-  background-color: transparent;
+.scale label {
   cursor: pointer;
-  transition: background-color 0.2s ease;
-  position: relative;
 }
 
-/* Fill selected circles */
-.option-circle:checked {
-  background-color: #4CAF50;
-  border-color: #333;
+input[type="radio"] {
+  display: none;
 }
 
-/* First two (Agree) green, last two (Disagree) red */
-.options input:nth-of-type(1):checked,
-.options input:nth-of-type(2):checked {
-  background-color: #4CAF50;
+.circle {
+  display: inline-block;
+  border-radius: 50%;
+  border: 2px solid #3b2f1d;
+  transition: transform 0.2s ease;
 }
 
-.options input:nth-of-type(4):checked,
-.options input:nth-of-type(5):checked {
-  background-color: #f44336;
+.large {
+  width: 28px;
+  height: 28px;
 }
 
-/* Sizes of circles: outer bigger, inner smaller */
-.options input:nth-of-type(1) {
-  width: 30px;
-  height: 30px;
+.medium {
+  width: 20px;
+  height: 20px;
 }
 
-.options input:nth-of-type(2) {
-  width: 24px;
-  height: 24px;
+.small {
+  width: 14px;
+  height: 14px;
 }
 
-.options input:nth-of-type(3) {
-  width: 18px;
-  height: 18px;
+.green {
+  background-color: #c4f0c5;
 }
 
-.options input:nth-of-type(4) {
-  width: 24px;
-  height: 24px;
+.red {
+  background-color: #f5b3b3;
 }
 
-.options input:nth-of-type(5) {
-  width: 30px;
-  height: 30px;
+.gray {
+  background-color: #ccc;
 }
 
-/* Next/Submit button styling */
+input[type="radio"]:checked + .circle {
+  transform: scale(1.2);
+  border-color: #000;
+}
+
+/* Submit button */
 button {
-  padding: 12px 24px;
-  background-color: #8b5e3c;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #8B5E3C;
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 5px;
   cursor: pointer;
-  font-size: 16px;
-  margin-top: 30px;
-  transition: background-color 0.3s ease;
+  margin-top: 20px;
 }
 
-button:hover {
-  background-color: #6f4627;
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }
 
-/* Results page styling */
-.result {
-  font-size: 20px;
-  margin-bottom: 20px;
-  color: #3b2b1a;
+/* Result styling */
+#result-character {
+  font-size: 1.5em;
+  margin-top: 20px;
+}
+
+#result-description {
+  font-size: 1.1em;
+  margin-top: 15px;
 }
