@@ -88,12 +88,13 @@ input[type="radio"] {
 }
 
 .gray {
-  background-color: #ccc;
+  background-color: #d3d3d3;
 }
 
 input[type="radio"]:checked + .circle {
-  transform: scale(1.2);
+  transform: scale(1.3);
   border-color: #000;
+  border-width: 3px;
 }
 
 /* Submit button */
