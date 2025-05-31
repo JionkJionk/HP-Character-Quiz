@@ -2,18 +2,42 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Harry Potter Personality Quiz</title>
+  <title>Quiz</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="container">
-    <h1>Harry Potter Personality Quiz</h1>
-    <form id="quiz-form">
-      <!-- Questions inserted here by JavaScript -->
-    </form>
-    <button id="submit-btn" disabled>Submit</button>
-  </div>
+  <form id="quizForm" class="container">
+    <h2>Answer the questions below:</h2>
+
+    <div class="question">
+      <p>I would risk getting in trouble to stand up for a friend.</p>
+      <div class="scale">
+        <span>Agree</span>
+        <label><input type="radio" name="q1" value="a" required /><span class="circle large green"></span></label>
+        <label><input type="radio" name="q1" value="b" /><span class="circle medium green"></span></label>
+        <label><input type="radio" name="q1" value="c" /><span class="circle small gray"></span></label>
+        <label><input type="radio" name="q1" value="d" /><span class="circle medium red"></span></label>
+        <label><input type="radio" name="q1" value="e" /><span class="circle large red"></span></label>
+        <span>Disagree</span>
+      </div>
+    </div>
+
+    <div class="question">
+      <p>I try to do the right thing, even if people dislike me.</p>
+      <div class="scale">
+        <span>Agree</span>
+        <label><input type="radio" name="q2" value="a" required /><span class="circle large green"></span></label>
+        <label><input type="radio" name="q2" value="b" /><span class="circle medium green"></span></label>
+        <label><input type="radio" name="q2" value="c" /><span class="circle small gray"></span></label>
+        <label><input type="radio" name="q2" value="d" /><span class="circle medium red"></span></label>
+        <label><input type="radio" name="q2" value="e" /><span class="circle large red"></span></label>
+        <span>Disagree</span>
+      </div>
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+
   <script src="script.js"></script>
 </body>
 </html>
