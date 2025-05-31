@@ -1,76 +1,132 @@
+/* Overall page background */
 body {
-  background-color: #fefbf4;
-  font-family: 'Georgia', serif;
   margin: 0;
   padding: 0;
-}
-
-.container {
-  max-width: 700px;
-  margin: 50px auto;
-  background-color: #fcf4dd;
-  border: 2px solid #a67c52;
-  padding: 40px;
-  text-align: center;
-  border-radius: 10px;
-}
-
-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  margin-top: 30px;
-  cursor: pointer;
-  background-color: #a67c52;
-  color: white;
-  border: none;
-  border-radius: 5px;
-}
-
-.question {
-  margin: 30px 0;
-}
-
-.scale {
+  font-family: 'Georgia', serif;
+  background-color: #fdf6e3; /* light parchment background */
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 12px;
+  min-height: 100vh;
+}
+
+/* Main container box */
+.container {
+  background-color: #f7f1dc; /* parchment beige */
+  border: 2px solid #8b5e3c; /* thin brown border */
+  border-radius: 10px;
+  padding: 40px;
+  max-width: 800px;
+  width: 90%;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+/* Title styling */
+h1 {
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: #4b2e1e;
+}
+
+/* Question styling */
+.question {
+  margin-bottom: 30px;
+}
+
+/* Each group of options */
+.options {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 10px;
 }
 
-.circle {
-  display: inline-block;
+/* Label text for Agree/Disagree */
+.scale-label {
+  font-size: 14px;
+  color: #444;
+  margin: 0 10px;
+}
+
+/* Radio inputs styled as circles */
+.option-circle {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 24px;
+  height: 24px;
+  margin: 0 6px;
   border-radius: 50%;
-  display: inline-block;
+  border: 2px solid #555;
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  position: relative;
 }
 
-.large {
-  width: 26px;
-  height: 26px;
+/* Fill selected circles */
+.option-circle:checked {
+  background-color: #4CAF50;
+  border-color: #333;
 }
 
-.medium {
+/* First two (Agree) green, last two (Disagree) red */
+.options input:nth-of-type(1):checked,
+.options input:nth-of-type(2):checked {
+  background-color: #4CAF50;
+}
+
+.options input:nth-of-type(4):checked,
+.options input:nth-of-type(5):checked {
+  background-color: #f44336;
+}
+
+/* Sizes of circles: outer bigger, inner smaller */
+.options input:nth-of-type(1) {
+  width: 30px;
+  height: 30px;
+}
+
+.options input:nth-of-type(2) {
+  width: 24px;
+  height: 24px;
+}
+
+.options input:nth-of-type(3) {
   width: 18px;
   height: 18px;
 }
 
-.small {
-  width: 12px;
-  height: 12px;
+.options input:nth-of-type(4) {
+  width: 24px;
+  height: 24px;
 }
 
-.green {
-  background-color: #4CAF50;
+.options input:nth-of-type(5) {
+  width: 30px;
+  height: 30px;
 }
 
-.red {
-  background-color: #f44336;
+/* Next/Submit button styling */
+button {
+  padding: 12px 24px;
+  background-color: #8b5e3c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 30px;
+  transition: background-color 0.3s ease;
 }
 
-.gray {
-  background-color: #999;
+button:hover {
+  background-color: #6f4627;
 }
 
-input[type="radio"] {
-  display: none;
+/* Results page styling */
+.result {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #3b2b1a;
 }
