@@ -42,11 +42,20 @@ h1, h2 {
   align-items: center;
   justify-content: center;
   gap: 10px;
+  margin-bottom: 40px;
 }
 
 .scale span {
   font-weight: bold;
   margin: 0 10px;
+}
+
+.label-space {
+  min-width: 60px;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-weight: bold;
 }
 
 .scale label {
