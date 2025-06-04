@@ -222,8 +222,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (answeredCount === totalQuestions) {
         submitBtn.classList.add("ready-to-submit");
+        submitBtn.disabled = false;
       } else {
         submitBtn.classList.remove("ready-to-submit");
+        submitBtn.disabled = true;
       }
     }
 
