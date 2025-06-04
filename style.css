@@ -166,3 +166,16 @@ button.ready-to-submit {
   font-size: 1.1em;
   margin-top: 15px;
 }
+
+/* For all buttons */
+button:hover:enabled {
+  filter: brightness(1.1);
+  transition: filter 0.2s ease;
+}
+
+/* For all clickable labels (like quiz options) */
+label:hover {
+  filter: brightness(1.1);
+  transition: filter 0.2s ease;
+  cursor: pointer;
+}
