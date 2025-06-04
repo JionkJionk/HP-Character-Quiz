@@ -153,6 +153,7 @@ button.ready-to-submit {
   border-width: 4px;
   background-color: #4CAF50; /* green */
   color: white;
+  cursor: pointer;
 }
 
 /* Result styling */
