@@ -148,6 +148,13 @@ button:disabled {
   cursor: not-allowed;
 }
 
+button.ready-to-submit {
+  border-color: #4CAF50;
+  border-width: 4px;
+  background-color: #4CAF50; /* green */
+  color: white;
+}
+
 /* Result styling */
 #result-character {
   font-size: 1.5em;
