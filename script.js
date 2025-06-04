@@ -213,6 +213,26 @@ const scoreData = {
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("quizForm");
   if (form) {
+    const submitBtn = form.querySelector("button[type='submit']");
+    const totalQuestions = Object.keys(scoreData).length;
+
+    function checkAllAnswered() {
+      const formData = new FormData(form);
+      const answeredCount = new Set([...formData.keys()]).size;
+
+      if (answeredCount === totalQuestions) {
+        submitBtn.classList.add("ready-to-submit");
+      } else {
+        submitBtn.classList.remove("ready-to-submit");
+      }
+    }
+
+    // Initial check on page load
+    checkAllAnswered();
+
+    // Listen for changes to update button style
+    form.addEventListener("change", checkAllAnswered);
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
 
