@@ -25,7 +25,7 @@ const scoreData = {
     c: { HP:0, HG:0, RW:0, DM:0, NL:1, AD:0, MM:0, RH:0, SS:0 },
     d: { HP:1, HG:0, RW:1, DM:1, NL:0, AD:0, MM:0, RH:1, SS:0 },
     e: { HP:2, HG:0, RW:2, DM:2, NL:0, AD:0, MM:0, RH:2, SS:0 }
-  }
+  },
   q3: {
     a: { HP:0, HG:2, RW:0, DM:0, NL:1, AD:1, MM:2, RH:0, SS:2 },
     b: { HP:0, HG:1, RW:0, DM:0, NL:2, AD:2, MM:1, RH:0, SS:1 },
