@@ -128,7 +128,7 @@ button.ready-to-submit {
   transform: scale(1.05);
 }
 
-#startButton {
+.start-button {
   padding: 10px 20px;
   font-size: 16px;
   background-color: #8B5E3C;
@@ -139,7 +139,7 @@ button.ready-to-submit {
   transition: background-color 0.3s ease;
 }
 
-#startButton:hover {
+.start-button:hover {
   background-color: #A26F4A;
 }
 
