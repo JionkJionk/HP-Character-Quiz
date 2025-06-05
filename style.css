@@ -157,6 +157,11 @@ button.ready-to-submit {
 }
 
 /* Result styling */
+
+#result-title {
+  margin-bottom: 0.5em; /* smaller gap below the title */
+}
+
 #result-character {
   font-size: 1.5em;
   margin-top: 1em;
