@@ -4,14 +4,14 @@ body, html {
   padding: 0;
   height: 100%;
   font-family: 'Georgia', serif;
-  background-color: #FCF5E5; /* Parchment background */
+  background-color: #FED488; /* Parchment background */
   display: block;
   overflow-x: hidden;
 }
 
 .container {
-  background-color: #F2E2C4; /* Slightly darker parchment */
-  border: 2px solid #8B5E3C; /* Brown border */
+  background-color: #FFD280; /* Slightly darker parchment */
+  border: 4px solid #B47809; /* Brown border */
   padding: 40px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
@@ -138,7 +138,7 @@ button.ready-to-submit {
 .start-button {
   padding: 10px 20px;
   font-size: 16px;
-  background-color: #8B5E3C;
+  background-color: #980000;
   color: white;
   border: 2px solid transparent;
   border-radius: 5px;
@@ -147,7 +147,7 @@ button.ready-to-submit {
 }
 
 .start-button:hover {
-  background-color: #A26F4A;
+  background-color: #BD4040;
 }
 
 button:disabled {
@@ -192,13 +192,13 @@ button.ready-to-submit {
 
 /* For all buttons */
 button:hover:enabled {
-  filter: brightness(1.1);
+  filter: brightness(1.2);
   transition: filter 0.2s ease;
 }
 
 /* For all clickable labels (like quiz options) */
 label:hover {
-  filter: brightness(1.1);
+  filter: brightness(1.2);
   transition: filter 0.2s ease;
   cursor: pointer;
 }
