@@ -10,7 +10,7 @@ body, html {
 }
 
 .container {
-  background-color: #FFD2A7; /* Slightly darker parchment */
+  background-color: #FFE1C4; /* Slightly darker parchment */
   border: 4px solid #7D5500; /* Brown border */
   padding: 40px;
   border-radius: 10px;
@@ -156,9 +156,9 @@ button:disabled {
 }
 
 button.ready-to-submit {
-  border-color: #4CAF50;
+  border-color: #27851C;
   border-width: 4px;
-  background-color: #4CAF50 !important; /* green */
+  background-color: #27851C !important; /* green */
   color: white;
   cursor: pointer !important;
 }
@@ -192,13 +192,13 @@ button.ready-to-submit {
 
 /* For all buttons */
 button:hover:enabled {
-  filter: brightness(1.2);
+  filter: brightness(1.1);
   transition: filter 0.2s ease;
 }
 
 /* For all clickable labels (like quiz options) */
 label:hover {
-  filter: brightness(1.2);
+  filter: brightness(1.1);
   transition: filter 0.2s ease;
   cursor: pointer;
 }
