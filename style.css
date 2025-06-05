@@ -160,12 +160,12 @@ button.ready-to-submit {
 #result-character {
   font-size: 1.5em;
   margin-top: 20px;
-  line-height: 1.8;
 }
 
 #result-description {
   font-size: 1.1em;
   margin-top: 15px;
+  line-height: 1.8;
 }
 
 /* For all buttons */
