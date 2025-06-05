@@ -168,6 +168,12 @@ button.ready-to-submit {
   line-height: 1.8;
 }
 
+#result-text-wrapper {
+  max-width: 600px;   /* Adjust width as needed */
+  margin: 0 auto;     /* Centers it inside the container */
+  line-height: 1.8;   /* Increases line spacing */
+}
+
 /* For all buttons */
 button:hover:enabled {
   filter: brightness(1.1);
