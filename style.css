@@ -21,6 +21,12 @@ body, html {
   margin: 40px auto;
 }
 
+.exam-instructions p {
+  margin-bottom: 0.5em;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
 /* Headings */
 h1, h2 {
   margin-bottom: 50px;
