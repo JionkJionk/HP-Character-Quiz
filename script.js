@@ -10,6 +10,27 @@ const characterMap = {
   SS: "Severus Snape"
 };
 
+const characterDescriptions = {
+  HP: `You are brave, determined, and loyal. You often take actions without thinking it through, but you trust your instincts to guide you in the right direction. You care about your friends, and you are willing to put yourself in danger to protect them. Like Harry, you carry a strong sense of justice and are not afraid to stand up for what is right.`,
+  
+  HG: `You are intelligent, hardworking, and curious. You always seek to learn and understand more, and you use your knowledge to help others. You are sometimes a perfectionist and overthinker, but you are loyal to your friends and those you trust, and you speak up for them even if it puts you in trouble. Like Hermione, you believe that knowledge is power and are not afraid to speak up for justice.`,
+  
+  RW: `You are loyal, funny, and sometimes a bit insecure. You may doubt yourself at times, but you are brave and step up when it truly matters. Like Ron, you seek attention and success, you value friendship deeply and would go out of your way to help your friends in need. You are often humorous and care for your friends, even if you fight with them sometimes.`,
+  
+  NL: `You are kindhearted, and timid, but surprisingly brave in important situations. You may not always be confident about your own strengths, but when your friends need you, you find the courage to stand up. You try to do what is right, even if it is hard. Not to get attention, but because you have a strong sense of justice. Like Neville, people may underestimate you, but deep down, you are much stronger than you realize.`,
+  
+  DM: `You are confident, ambitious, and care a lot about how others see you. You like to have power and sometimes act tough to get it. You appear cold-hearted and strong, but deep down, you care for your close friends and are very loyal to the people you look up to. You are always determined to achieve what you want. Like Malfoy, you may seem heartless, but you care for your friends. You are very persistent and try your best to fulfil your ambition.`,
+  
+  AD: `You are wise, patient, and thoughtful. You are always looking at the bigger picture and thinking deeply before making a decision. You like to help others by guiding them to the right answer, even if you have to keep some secrets from them. You are trusted and respected by many others because you are wise and thoughtful about every choice you make. You enjoy solving problems in creative ways and don’t jump to conclusions. Like Professor Dumbledore, even in the darkest of times, you know how to find happiness.`,
+  
+  MM: `You are strict, fair, and responsible. You take rules seriously and have high expectations for others. You may be strict, but you care deeply about the people around you and know how to break rules when necessary. You are smart, wise, and have a strong sense of justice. Like Professor McGonagall, you are respected and trusted by the people around you because you are fair and always stand up for what is right.`,
+  
+  SS: `You are a serious and mysterious person. You do not show your feelings easily and may appear cold and heartless. But deep down, you have a warm heart, and help those around you in danger, even if it means risking your own safety. You may be strict and merciless, but loyal to those who matter to you. Like Professor Snape, people might not always understand you, but you are kindhearted and caring for those you care about.`,
+  
+  RH: `You are warm, friendly, and loyal. You are sometimes clumsy but have very good intentions in your actions. You enjoy being around animals and nature, and you value honesty and friendship more than anything. You always go out of your way to help your friends no matter what. People feel safe around you because you are very loyal, welcoming, and would never turn your back on someone in need. Like Hagrid, you are a very kind and loyal person, and you are always there to support your friends.`
+};
+
+
 // Point values from your quiz (so far q1 and q2)
 const scoreData = {
   q1: {
@@ -273,6 +294,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("result-character").innerText =
       characterMap[resultChar] || "Unknown";
     document.getElementById("result-description").innerText =
-      resultDesc || "Description not found.";
+      characterDescriptions[resultChar] || "Description not found.";
   }
 });
