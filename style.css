@@ -151,7 +151,7 @@ button.ready-to-submit {
 }
 
 button:disabled {
-  background-color: #ccc;
+  background-color: #B3B3B3;
   cursor: not-allowed;
 }
 
