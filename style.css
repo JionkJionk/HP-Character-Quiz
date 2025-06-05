@@ -160,12 +160,14 @@ button.ready-to-submit {
 
 #result-title {
   margin-bottom: 0.5em; /* smaller gap below the title */
+  font-weight: normal;
 }
 
 #result-character {
   font-size: 1.5em;
   margin-top: 1em;
   margin-bottom: 1em;
+  font-weight: bold;
 }
 
 #result-description {
